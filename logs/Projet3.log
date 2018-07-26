@@ -1,0 +1,92 @@
+20:14:45.117 [Projet3 v0.1] DEBUG main.java.view.MainFrame - Le contenu de la fenêtre a été initalisée
+22:11:13.360 [Projet3 v0.1] DEBUG main.java.view.MainFrame - Le contenu de la fenêtre a été initalisée
+22:25:28.983 [Projet3 v0.1] DEBUG main.java.view.MainFrame - Le contenu de la fenêtre a été initalisée
+22:25:56.497 [Projet3 v0.1] DEBUG main.java.view.MainFrame - Le contenu de la fenêtre a été initalisée
+22:32:09.261 [Projet3 v0.1] INFO  main.java.view.PopUpCfg - On passe ici !
+22:33:13.147 [Projet3 v0.1] DEBUG main.java.view.MainFrame - Le contenu de la fenêtre a été initalisée
+22:33:30.131 [Projet3 v0.1] DEBUG main.java.view.MainFrame - Le contenu de la fenêtre a été initalisée
+22:39:07.849 [Projet3 v0.1] DEBUG main.java.view.MainFrame - Le contenu de la fenêtre a été initalisée
+22:44:51.405 [Projet3 v0.1] DEBUG main.java.view.MainFrame - Le contenu de la fenêtre a été initalisée
+22:46:10.588 [Projet3 v0.1] DEBUG main.java.view.MainFrame - Le contenu de la fenêtre a été initalisée
+22:49:23.404 [Projet3 v0.1] INFO  main.java.view.PopUpCfg - On passe ici !
+22:57:58.629 [Projet3 v0.1] DEBUG main.java.view.MainFrame - Le contenu de la fenêtre a été initalisée
+23:07:48.632 [Projet3 v0.1] DEBUG main.java.view.MainFrame - Le contenu de la fenêtre a été initalisée
+23:08:10.949 [Projet3 v0.1] INFO  main.java.view.PopUpCfg - On passe ici !
+23:08:43.595 [Projet3 v0.1] DEBUG main.java.view.MainFrame - Le contenu de la fenêtre a été initalisée
+23:09:07.654 [Projet3 v0.1] DEBUG main.java.view.MainFrame - Le contenu de la fenêtre a été initalisée
+23:12:11.403 [Projet3 v0.1] INFO  main.java.view.PopUpCfg - On passe ici !
+23:13:32.477 [Projet3 v0.1] DEBUG main.java.view.MainFrame - Le contenu de la fenêtre a été initalisée
+23:14:14.540 [Projet3 v0.1] INFO  main.java.view.PopUpCfg - On passe ici !
+09:30:46.400 [Projet3 v0.1] DEBUG main.java.view.MainFrame - Le contenu de la fenêtre a été initalisée
+09:31:59.767 [Projet3 v0.1] DEBUG main.java.view.MainFrame - Le contenu de la fenêtre a été initalisée
+09:33:50.204 [Projet3 v0.1] DEBUG main.java.view.MainFrame - Le contenu de la fenêtre a été initalisée
+09:52:41.229 [Projet3 v0.1] DEBUG main.java.view.MainFrame - Le contenu de la fenêtre a été initalisée
+09:53:16.087 [Projet3 v0.1] INFO  main.java.view.PopUpCfg - On passe ici !
+14:33:35.003 [Projet3 v0.1] DEBUG main.java.view.MainFrame - Le contenu de la fenêtre a été initalisée
+14:34:21.000 [Projet3 v0.1] DEBUG main.java.view.MainFrame - Le contenu de la fenêtre a été initalisée
+14:45:11.750 [Projet3 v0.1] DEBUG main.java.view.MainFrame - Le contenu de la fenêtre a été initalisée
+14:51:49.639 [Projet3 v0.1] DEBUG main.java.view.MainFrame - Le contenu de la fenêtre a été initalisée
+14:52:43.154 [Projet3 v0.1] DEBUG main.java.view.MainFrame - Le contenu de la fenêtre a été initalisée
+14:53:47.654 [Projet3 v0.1] DEBUG main.java.view.MainFrame - Le contenu de la fenêtre a été initalisée
+14:54:09.363 [Projet3 v0.1] DEBUG main.java.view.MainFrame - recuperation des clés/values dasn config.properties
+14:54:09.567 [Projet3 v0.1] DEBUG main.java.view.MainFrame - Le contenu de la fenêtre a été initalisée
+14:55:40.874 [Projet3 v0.1] DEBUG main.java.view.MainFrame - recuperation des clés/values dans config.properties
+14:55:41.057 [Projet3 v0.1] DEBUG main.java.view.MainFrame - Le contenu de la fenêtre a été initalisée
+14:58:21.675 [Projet3 v0.1] DEBUG main.java.view.MainFrame - recuperation des clés/values dans config.properties
+14:58:21.860 [Projet3 v0.1] DEBUG main.java.view.MainFrame - Le contenu de la fenêtre a été initalisée
+14:59:01.839 [Projet3 v0.1] INFO  main.java.view.PopUpCfg - On passe ici !
+14:59:32.438 [Projet3 v0.1] DEBUG main.java.view.MainFrame - recuperation des clés/values dans config.properties
+14:59:32.603 [Projet3 v0.1] DEBUG main.java.view.MainFrame - Le contenu de la fenêtre a été initalisée
+14:59:45.997 [Projet3 v0.1] INFO  main.java.view.PopUpCfg - On passe ici !
+15:01:41.558 [Projet3 v0.1] DEBUG main.java.view.MainFrame - recuperation des clés/values dans config.properties
+15:01:41.737 [Projet3 v0.1] DEBUG main.java.view.MainFrame - Le contenu de la fenêtre a été initalisée
+15:01:51.716 [Projet3 v0.1] INFO  main.java.view.PopUpCfg - On passe ici !
+15:03:18.627 [Projet3 v0.1] DEBUG main.java.view.MainFrame - recuperation des clés/values dans config.properties
+15:03:18.814 [Projet3 v0.1] DEBUG main.java.view.MainFrame - Le contenu de la fenêtre a été initalisée
+15:03:24.800 [Projet3 v0.1] INFO  main.java.view.PopUpCfg - On passe ici !
+15:03:54.793 [Projet3 v0.1] DEBUG main.java.view.MainFrame - recuperation des clés/values dans config.properties
+15:03:54.983 [Projet3 v0.1] DEBUG main.java.view.MainFrame - Le contenu de la fenêtre a été initalisée
+15:03:59.620 [Projet3 v0.1] INFO  main.java.view.PopUpCfg - On passe ici !
+15:04:11.491 [Projet3 v0.1] DEBUG main.java.view.MainFrame - recuperation des clés/values dans config.properties
+15:04:11.679 [Projet3 v0.1] DEBUG main.java.view.MainFrame - Le contenu de la fenêtre a été initalisée
+15:04:23.103 [Projet3 v0.1] INFO  main.java.view.PopUpCfg - On passe ici !
+15:43:58.757 [Projet3 v0.1] DEBUG main.java.view.MainFrame - recuperation des clés/values dans config.properties
+15:43:58.935 [Projet3 v0.1] DEBUG main.java.view.MainFrame - Le contenu de la fenêtre a été initalisée
+15:44:11.589 [Projet3 v0.1] INFO  main.java.view.PopUpCfg - cliqué sur ok 
+16:00:27.196 [Projet3 v0.1] DEBUG main.java.view.MainFrame - recuperation des clés/values dans config.properties
+16:00:27.329 [Projet3 v0.1] DEBUG main.java.view.MainFrame - Le contenu de la fenêtre a été initalisée
+16:01:16.818 [Projet3 v0.1] INFO  main.java.view.PopUpCfg - cliqué sur ok 
+16:01:31.438 [Projet3 v0.1] DEBUG main.java.view.MainFrame - recuperation des clés/values dans config.properties
+16:01:31.633 [Projet3 v0.1] DEBUG main.java.view.MainFrame - Le contenu de la fenêtre a été initalisée
+16:01:42.133 [Projet3 v0.1] INFO  main.java.view.PopUpCfg - cliqué sur ok 
+16:01:58.808 [Projet3 v0.1] DEBUG main.java.view.MainFrame - recuperation des clés/values dans config.properties
+16:01:58.968 [Projet3 v0.1] DEBUG main.java.view.MainFrame - Le contenu de la fenêtre a été initalisée
+16:02:07.200 [Projet3 v0.1] INFO  main.java.view.PopUpCfg - cliqué sur ok 
+16:03:40.026 [Projet3 v0.1] DEBUG main.java.view.MainFrame - recuperation des clés/values dans config.properties
+16:03:40.227 [Projet3 v0.1] DEBUG main.java.view.MainFrame - Le contenu de la fenêtre a été initalisée
+16:03:43.932 [Projet3 v0.1] INFO  main.java.view.PopUpCfg - cliqué sur ok 
+16:03:59.430 [Projet3 v0.1] DEBUG main.java.view.MainFrame - recuperation des clés/values dans config.properties
+16:03:59.616 [Projet3 v0.1] DEBUG main.java.view.MainFrame - Le contenu de la fenêtre a été initalisée
+16:04:30.456 [Projet3 v0.1] INFO  main.java.view.PopUpCfg - cliqué sur ok 
+16:16:20.087 [Projet3 v0.1] DEBUG main.java.view.MainFrame - recuperation des clés/values dans config.properties
+16:16:20.284 [Projet3 v0.1] DEBUG main.java.view.MainFrame - Le contenu de la fenêtre a été initalisée
+16:16:27.620 [Projet3 v0.1] INFO  main.java.view.PopUpCfg - cliqué sur ok 
+16:34:40.076 [Projet3 v0.1] DEBUG main.java.view.MainFrame - recuperation des clés/values dans config.properties
+16:34:40.216 [Projet3 v0.1] DEBUG main.java.view.MainFrame - Le contenu de la fenêtre a été initalisée
+16:37:02.560 [Projet3 v0.1] DEBUG main.java.view.MainFrame - recuperation des clés/values dans config.properties
+16:37:02.698 [Projet3 v0.1] DEBUG main.java.view.MainFrame - Le contenu de la fenêtre a été initalisée
+16:44:14.101 [Projet3 v0.1] DEBUG main.java.view.MainFrame - recuperation des clés/values dans config.properties
+16:44:14.304 [Projet3 v0.1] DEBUG main.java.view.MainFrame - Le contenu de la fenêtre a été initalisée
+16:46:12.043 [Projet3 v0.1] DEBUG main.java.view.MainFrame - recuperation des clés/values dans config.properties
+16:46:12.220 [Projet3 v0.1] DEBUG main.java.view.MainFrame - Le contenu de la fenêtre a été initalisée
+16:47:18.590 [Projet3 v0.1] DEBUG main.java.view.MainFrame - recuperation des clés/values dans config.properties
+16:47:18.768 [Projet3 v0.1] DEBUG main.java.view.MainFrame - Le contenu de la fenêtre a été initalisée
+16:49:13.321 [Projet3 v0.1] DEBUG main.java.view.MainFrame - recuperation des clés/values dans config.properties
+16:49:13.465 [Projet3 v0.1] DEBUG main.java.view.MainFrame - Le contenu de la fenêtre a été initalisée
+18:38:22.292 [Projet3 v0.1] DEBUG main.java.view.MainFrame - recuperation des clés/values dans config.properties
+18:38:22.461 [Projet3 v0.1] DEBUG main.java.view.MainFrame - Le contenu de la fenêtre a été initalisée
+13:25:28.116 [Projet3 v0.1] DEBUG main.java.view.MainFrame - recuperation des clés/values dans config.properties
+13:25:28.377 [Projet3 v0.1] DEBUG main.java.view.MainFrame - Le contenu de la fenêtre a été initalisée
+13:25:55.117 [Projet3 v0.1] INFO  main.java.view.PopUpCfg - cliqué sur ok 
+13:26:26.263 [Projet3 v0.1] DEBUG main.java.view.MainFrame - recuperation des clés/values dans config.properties
+13:26:26.373 [Projet3 v0.1] DEBUG main.java.view.MainFrame - Le contenu de la fenêtre a été initalisée
