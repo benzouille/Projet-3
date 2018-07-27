@@ -20,6 +20,7 @@ import javax.swing.event.ChangeListener;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import main.java.model.Configuration;
 import main.java.observer.Observable;
 import main.java.observer.Observateur;
 
@@ -42,9 +43,10 @@ public class PopUpCfg extends JDialog implements Observable {
 
 	private JCheckBox devMode;
 
+	private Configuration config;
+	
 	private int tourPlusMoins, tourMast, combiPlusMoins, combiMast, couleurMast;
 	private boolean devMod, devModEnJeu;
-
 
 	/**
 	 * constructeur avec parametres
@@ -54,17 +56,21 @@ public class PopUpCfg extends JDialog implements Observable {
 	 * @param dev
 	 * @param obs
 	 */
-	public PopUpCfg(JFrame parent, String title, boolean modal, boolean devMod,int tourPlusMoins, int tourMast, int combiPlusMoins, int combiMast, int couleurMast, Observateur obs) {
+	public PopUpCfg(JFrame parent, String title, boolean modal, Configuration config, Observateur obs) {
 		super(parent, title, modal);
-
+		
+		
+		
+		this.devMod = config.isDevMod();
+		this.tourPlusMoins = config.getTourPlusMoins();
+		this.tourMast = config.getTourMast();
+		this.combiPlusMoins = config.getCombiPlusMoins();
+		this.combiMast = config.getCombiMast();
+		this.couleurMast = config.getCouleurMast();
+		this.config = config;
+		// mieux ? oui normalement ca marche la teste voir
+		
 		this.addObservateur(obs);
-		this.devMod = devMod;
-		this.tourPlusMoins = tourPlusMoins;
-		this.tourMast = tourMast;
-		this.combiPlusMoins = combiPlusMoins;
-		this.combiMast = combiMast;
-		this.couleurMast = couleurMast;
-
 		this.setSize(870, 340);
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
@@ -96,6 +102,7 @@ public class PopUpCfg extends JDialog implements Observable {
 		slideTourPlusMoins.addChangeListener(new ChangeListener(){
 			public void stateChanged(ChangeEvent event){
 				//modifier pour setter le nombre de tour 
+				tourPlusMoins = ((JSlider)event.getSource()).getValue();
 				logger.trace("Nombre de tour du plus moins : " + ((JSlider)event.getSource()).getValue());
 			}
 		});
@@ -120,7 +127,8 @@ public class PopUpCfg extends JDialog implements Observable {
 		slideChiffrePlusMoins.setMajorTickSpacing(2);
 		slideChiffrePlusMoins.addChangeListener(new ChangeListener(){
 			public void stateChanged(ChangeEvent event){
-				//modifier pour setter le nombre de tour 
+				//modifier pour setter le nombre de tour
+				combiPlusMoins = ((JSlider)event.getSource()).getValue();
 				logger.trace("Nombre de chiffre du plus moins : " + ((JSlider)event.getSource()).getValue());
 			}
 		});
@@ -154,7 +162,8 @@ public class PopUpCfg extends JDialog implements Observable {
 		slideTourMast.setMajorTickSpacing(5);
 		slideTourMast.addChangeListener(new ChangeListener(){
 			public void stateChanged(ChangeEvent event){
-				//modifier pour setter le nombre de tour 
+				//modifier pour setter le nombre de tour
+				tourMast = ((JSlider)event.getSource()).getValue();
 				logger.trace("Nombre de tour du mastermind : " + ((JSlider)event.getSource()).getValue());
 			}
 		});
@@ -180,6 +189,7 @@ public class PopUpCfg extends JDialog implements Observable {
 		slideCasesMast.addChangeListener(new ChangeListener(){
 			public void stateChanged(ChangeEvent event){
 				//modifier pour setter le nombre de tour 
+				combiMast  = ((JSlider)event.getSource()).getValue();
 				logger.trace("Nombre de chiffre du plus moins : " + ((JSlider)event.getSource()).getValue());
 			}
 		});
@@ -204,7 +214,8 @@ public class PopUpCfg extends JDialog implements Observable {
 		slideCouleurMast.setMajorTickSpacing(2);
 		slideCouleurMast.addChangeListener(new ChangeListener(){
 			public void stateChanged(ChangeEvent event){
-				//modifier pour setter le nombre de tour 
+				//modifier pour setter le nombre de tour
+				couleurMast = ((JSlider)event.getSource()).getValue();
 				logger.trace("Nombre de couleurs du mastermind : " + ((JSlider)event.getSource()).getValue());
 			}
 		});
@@ -268,10 +279,17 @@ public class PopUpCfg extends JDialog implements Observable {
 			logger.info("cliqué sur ok ");
 			setVisible(false);
 			if(devMode.isSelected())
-				devMod = true;
+				devModEnJeu = true;
 			else
-				devMod = false;
+				devModEnJeu = false;
 			
+			config.setDevModEnJeu(devModEnJeu);
+			config.setTourPlusMoins(tourPlusMoins);
+			config.setTourMast(tourMast);
+			config.setCombiPlusMoins(combiPlusMoins);
+			config.setCombiMast(combiMast);
+			config.setCouleurMast(couleurMast);
+			config.toString();
 			updateObservateur();
 		}
 	}
@@ -302,7 +320,7 @@ public class PopUpCfg extends JDialog implements Observable {
 	public void updateObservateur() {
 		// TODO Auto-generated method stub
 		for(Observateur obs : listObservateur)
-			obs.update(devModEnJeu, tourPlusMoins, tourMast, combiPlusMoins, combiMast, couleurMast);
+			obs.update(config);
 	}
 
 	public void delObservateur() {

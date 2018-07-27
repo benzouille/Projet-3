@@ -1,6 +1,8 @@
 package main.java.observer;
 
+import main.java.model.Configuration;
+
 public interface Observateur {
-	public void update(boolean devModEnJeu,int tourPlusMoins,int tourMast,int combiPlusMoins,int combiMast,int couleurMast);
+	public void update(Configuration config);
 	
 }

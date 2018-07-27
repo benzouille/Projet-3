@@ -22,8 +22,8 @@ public class PanelAccueil extends PanelModel {
 	
 	private JLabel titre;
 	private JTextArea texte;
-	private ImageIcon img = new ImageIcon("resources/images/trump_accueil.jpg");
-	private JLabel accueilImg = new JLabel(img);
+	//private ImageIcon img = new ImageIcon("resources/images/trump_accueil.jpg");
+	//private JLabel accueilImg = new JLabel(img);
 	private Dimension dim = new Dimension(1200, 800);
 
 	public PanelAccueil(Dimension dim) {
@@ -43,13 +43,13 @@ public class PanelAccueil extends PanelModel {
 		texte.setEditable(false);
 		texte.setBackground(Color.white);
 		
-		accueilImg.setPreferredSize(dim);
+		//accueilImg.setPreferredSize(dim);
 		
 		gauche.setLayout(new BorderLayout());
 		//gauche.add(titre, BorderLayout.NORTH);
 		gauche.add(texte, BorderLayout.CENTER);
 		
-		droite.add(accueilImg, BorderLayout.SOUTH);
+		//droite.add(accueilImg, BorderLayout.SOUTH);
 		
 		this.setLayout(new BorderLayout());
 		this.add(titre, BorderLayout.NORTH);

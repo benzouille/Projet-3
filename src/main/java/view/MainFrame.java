@@ -8,7 +8,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.Properties;
 
 import javax.swing.ImageIcon;
@@ -22,6 +24,7 @@ import javax.swing.KeyStroke;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import main.java.model.Configuration;
 import main.java.observer.Observateur;
 import main.java.view.game.plusMoins.PanelPlusMoins;
 
@@ -41,9 +44,11 @@ public class MainFrame extends JFrame implements Observateur {
 
 	//-- Les differents panels
 		private PanelAccueil accueil;
+		
+	//-- La configuration
+		private Configuration config;
 	
 	//-- Les différents objets de notre IHM
-
 	private JMenuBar bar = new JMenuBar();
 	private JMenu fichier = new JMenu("Fichier");
 	private JMenu nouveauJeu = new JMenu("Nouveau");
@@ -61,7 +66,7 @@ public class MainFrame extends JFrame implements Observateur {
 	private JMenuItem quitter = new JMenuItem("Quitter");
 
 	private JMenu configuration = new JMenu("Configuration");
-	private JMenuItem config = new JMenuItem("configuration");
+	private JMenuItem configMenuI = new JMenuItem("configuration");
 
 	private JMenu aProp = new JMenu("A Propos");
 	private JMenuItem aPropItem = new JMenuItem("A propos");
@@ -69,15 +74,6 @@ public class MainFrame extends JFrame implements Observateur {
 	private Dimension size = new Dimension (1600, 1024);
 	private Container contentPane;
 	private PanelPlusMoins plusMoinsDef, plusMoinsDuel, plusMoinsChal;
-
-	//-- Config.property
-	String path = "resources/config.properties";
-	Properties prop = new Properties();
-	InputStream input = null;
-	
-	//-- Les variables
-	private int tourPlusMoins, tourMast, combiPlusMoins, combiMast, couleurMast;
-	private boolean devMod, devModEnJeu;
 
 	/**
 	 * Constructeur par défaut qui permet d'initialiser la fenetre 
@@ -87,14 +83,15 @@ public class MainFrame extends JFrame implements Observateur {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setTitle("Projet 3");
 		this.setSize(size);
-
-		getCfg(path);
-		
+		config = new Configuration();
 		initPanel();
 		initMenu();
 		logger.debug("Le contenu de la fenêtre a été initalisée");
 	}
 
+	/**
+	 * initialisation du panel avec le panel accueil
+	 */
 	public void initPanel() {
 		//-- Données
 
@@ -109,7 +106,7 @@ public class MainFrame extends JFrame implements Observateur {
 
 
 	/**
-	 * Méthode qui initialise la barre de menu et les differents boutons la composant
+	 * Méthode qui initialise la barre de menu et les differents boutons la composant ainsi que les actionlistener pour chaque JMenuItem
 	 */
 	private void initMenu() {
 
@@ -123,7 +120,7 @@ public class MainFrame extends JFrame implements Observateur {
 		nouveauJeu.add(lePlusMoins);
 		lePlusMoinsChal.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
-				plusMoinsChal = new PanelPlusMoins(size, "chal", devModEnJeu, tourPlusMoins, combiPlusMoins);
+				plusMoinsChal = new PanelPlusMoins(size, "chal", config);
 				contentPane.removeAll();
 				contentPane.add(plusMoinsChal, BorderLayout.CENTER);
 				contentPane.revalidate();
@@ -132,7 +129,7 @@ public class MainFrame extends JFrame implements Observateur {
 		
 		lePlusMoinsDef.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
-				plusMoinsDef = new PanelPlusMoins(size, "def", devModEnJeu, tourPlusMoins, combiPlusMoins);
+				plusMoinsDef = new PanelPlusMoins(size, "def", config);
 				contentPane.removeAll();
 				contentPane.add(plusMoinsDef, BorderLayout.CENTER);
 				contentPane.revalidate();
@@ -141,7 +138,7 @@ public class MainFrame extends JFrame implements Observateur {
 		
 		lePlusMoinsDuel.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
-				plusMoinsDuel = new PanelPlusMoins(size, "duel", devModEnJeu, tourPlusMoins, combiPlusMoins);
+				plusMoinsDuel = new PanelPlusMoins(size, "duel", config);
 				contentPane.removeAll();
 				contentPane.add(plusMoinsDuel, BorderLayout.CENTER);
 				contentPane.revalidate();
@@ -171,11 +168,11 @@ public class MainFrame extends JFrame implements Observateur {
 
 		fichier.setMnemonic('f');
 
-		configuration.add(config);
+		configuration.add(configMenuI);
 		configuration.setMnemonic('c');
-		config.addActionListener(new ActionListener() {
+		configMenuI.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				PopUpCfg ajout = new PopUpCfg(null, "Configuration", true, devMod, tourPlusMoins, tourMast, combiPlusMoins, combiMast, couleurMast, obs);
+				PopUpCfg ajout = new PopUpCfg(null, "Configuration", true, config , obs);
 
 			}
 		});
@@ -202,38 +199,8 @@ public class MainFrame extends JFrame implements Observateur {
 		this.setJMenuBar(bar);
 	}
 
-	/**
-	 * Récuperation des configurations du jeu et du mode dev
-	 */
-	public void getCfg(String path) {
-		try {
-			input = new FileInputStream(path);
-
-			prop.load(input);
-			
-			// recuperation des clés/values
-			devMod = Boolean.parseBoolean(prop.getProperty("devMode"));
-			tourPlusMoins = Integer.valueOf(prop.getProperty("nbreTourPlusMoins"));
-			combiPlusMoins = Integer.valueOf(prop.getProperty("nbreCombiPlusMoins"));
-			tourMast = Integer.valueOf(prop.getProperty("nbreTourMast"));
-			combiMast = Integer.valueOf(prop.getProperty("nbreCombiMast"));
-			couleurMast = Integer.valueOf(prop.getProperty("nbreCouleur"));
-			logger.debug("recuperation des clés/values dans config.properties", devMod, tourPlusMoins, tourMast, combiPlusMoins, combiMast, couleurMast);
-			
-		}catch(Exception e) {
-			e.printStackTrace();
-			logger.catching(e);
-		}
-	}
-	
-	public void update(boolean devModEnJeu, int tourPlusMoins, int tourMast, int combiPlusMoins, int combiMast,
-			int couleurMast) {
-		this.devModEnJeu = devModEnJeu;
-		this.tourPlusMoins = tourPlusMoins;
-		this.tourMast = tourMast;
-		this.combiPlusMoins = combiPlusMoins;
-		this.combiMast = combiMast;
-		this.couleurMast = couleurMast;
-		System.out.println("test des config");
+	public void update(Configuration config) {
+		this.config = config;
+		logger.debug("configuration : "+ config.toString());
 	}
 }

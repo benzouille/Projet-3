@@ -7,13 +7,14 @@ import java.awt.Dimension;
 
 import javax.swing.JFrame;
 
+import main.java.model.Configuration;
 import main.java.view.PanelAccueil;
 
 public class Test extends JFrame {
-	private Dimension size = new Dimension (1600, 1024);
+	private Dimension size = new Dimension (800, 1024);
 	private Container contentPane;
 	private ModelGamePanel gp;
-	private PanelAccueil accueil;
+	private Configuration config;
 
 	public Test() {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -24,11 +25,12 @@ public class Test extends JFrame {
 	}
 
 	private void initPanel() {
-		//gp = new ModelGamePanel();
+		config = new Configuration();
+		gp = new ModelGamePanel("gauche", config,"");
 		//accueil = new PanelAccueil(size);
 		contentPane = this.getContentPane();
 		contentPane.setBackground(Color.white);
-		contentPane.add(accueil, BorderLayout.CENTER);
+		contentPane.add(gp, BorderLayout.CENTER);
 		this.setLocationRelativeTo(null);
 		this.size = new Dimension(this.getWidth(), this.getHeight());
 
