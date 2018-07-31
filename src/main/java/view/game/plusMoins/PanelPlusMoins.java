@@ -29,11 +29,11 @@ public class PanelPlusMoins extends PanelModel {
 		this.config = config;
 		initPanel();
 		this.setVisible(true);
-		//this.add(new JLabel("le plus moins"));
 	}
 
-
-	@Override
+/**
+ * Intitialisation du panel en fonction du mode de jeu
+ */
 	protected void initPanel() {
 		this.setLayout(new BorderLayout());
 		if(mode == "chal") {

@@ -8,13 +8,17 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 
 import main.java.model.Configuration;
+import main.java.observer.Observateur;
 import main.java.view.PanelAccueil;
+import main.java.view.game.plusMoins.PopUpCombi;
 
 public class Test extends JFrame {
 	private Dimension size = new Dimension (800, 1024);
 	private Container contentPane;
 	private ModelGamePanel gp;
 	private Configuration config;
+	private PopUpCombi combi;
+	private Observateur obs;
 
 	public Test() {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -26,7 +30,8 @@ public class Test extends JFrame {
 
 	private void initPanel() {
 		config = new Configuration();
-		gp = new ModelGamePanel("gauche", config,"");
+		combi = new PopUpCombi(null, "Combinaison", true, config , obs);
+		//gp = new ModelGamePanel("gauche", config,"");
 		//accueil = new PanelAccueil(size);
 		contentPane = this.getContentPane();
 		contentPane.setBackground(Color.white);

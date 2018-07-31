@@ -59,8 +59,6 @@ public class PopUpCfg extends JDialog implements Observable {
 	public PopUpCfg(JFrame parent, String title, boolean modal, Configuration config, Observateur obs) {
 		super(parent, title, modal);
 		
-		
-		
 		this.devMod = config.isDevMod();
 		this.tourPlusMoins = config.getTourPlusMoins();
 		this.tourMast = config.getTourMast();
@@ -68,7 +66,6 @@ public class PopUpCfg extends JDialog implements Observable {
 		this.combiMast = config.getCombiMast();
 		this.couleurMast = config.getCouleurMast();
 		this.config = config;
-		// mieux ? oui normalement ca marche la teste voir
 		
 		this.addObservateur(obs);
 		this.setSize(870, 340);
@@ -253,7 +250,7 @@ public class PopUpCfg extends JDialog implements Observable {
 		JPanel control = new JPanel();
 		JButton okBouton = new JButton("OK");
 
-		okBouton.addActionListener(new Run());
+		okBouton.addActionListener(new RunListener());
 
 		JButton cancelBouton = new JButton("Annuler");
 		cancelBouton.addActionListener(new ActionListener(){
@@ -274,7 +271,7 @@ public class PopUpCfg extends JDialog implements Observable {
 	 * @author Ben
 	 *
 	 */
-	class Run implements ActionListener {
+	class RunListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			logger.info("cliqué sur ok ");
 			setVisible(false);
