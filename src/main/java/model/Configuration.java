@@ -25,7 +25,7 @@ public class Configuration {
 
 	public Configuration() {
 		getCfg();
-		
+
 	}
 	public Configuration(int tourPlusMoins, int tourMast, int combiPlusMoins, int combiMast, int couleurMast, boolean devMod, boolean devModEnJeu) {
 		this.tourPlusMoins = tourPlusMoins;
@@ -67,17 +67,17 @@ public class Configuration {
 		//TODO faire l'enregistrement de la configuration dans le config.properties 
 		try {
 			output = new FileOutputStream(path);
-			
+
 			prop.setProperty("devMode", String.valueOf(devMod));
 			prop.setProperty("nbreTourPlusMoins", String.valueOf(tourPlusMoins));
 			prop.setProperty("nbreCombiPlusMoins", String.valueOf(combiPlusMoins));
 			prop.setProperty("nbreTourMast", String.valueOf(tourMast));
 			prop.setProperty("nbreCombiMast", String.valueOf(combiMast));
 			prop.setProperty("nbreCouleur", String.valueOf(couleurMast));
-			
+
 			prop.store(output, null);
 			logger.debug("modification du config.properties par setCfg()");
-			
+
 		}catch(Exception e) {
 			e.printStackTrace();
 			logger.catching(e);

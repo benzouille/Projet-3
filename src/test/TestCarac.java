@@ -1,4 +1,4 @@
-package main.java.view.game.plusMoins;
+package test;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -6,53 +6,40 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JDialog;
-import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.text.MaskFormatter;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import main.java.model.Configuration;
-import main.java.model.Partie;
 import main.java.observer.Observable;
 import main.java.observer.Observateur;
 
 
-public class PopUpCombi extends JDialog implements Observable {
-
-	/**
-	 * 
-	 */
+public class TestCarac extends JDialog implements Observable {
 	private static final long serialVersionUID = -1975827366674767282L;
-	//-- Les logs
 	private static final Logger logger = LogManager.getLogger();
-
 	protected ArrayList<Observateur> listObservateur = new ArrayList<Observateur>();
 	private JPanel content;
-	private JLabel jlCombi;
+	private JLabel jlSigne;
 	private Configuration config;
-	private Partie partie;
-	private JTextField jfCombi;
+	private JTextField jtSigne;
 	private boolean isOkData;
 	private int nbreChiffre, combi;
-	private String solution;
 
-
-	public PopUpCombi(JFrame parent, String title, boolean modal, Configuration config, Partie partie, Observateur obs) {
+	public TestCarac(JFrame parent, String title, boolean modal, Configuration config, Observateur obs) {
 		super(parent, title, modal);
 		this.config =config;
-		this.partie = partie;
 		nbreChiffre = config.getCombiPlusMoins();
 		this.addObservateur(obs);
 		this.setSize(600, 160);
@@ -64,71 +51,57 @@ public class PopUpCombi extends JDialog implements Observable {
 	}
 
 	public void initComponent() {
-
+		jlSigne = new JLabel("test des carateres + - =");
+		jtSigne = new JTextField();
+		jtSigne.setPreferredSize(new Dimension(210, 40));
+		jtSigne.setFont(new Font("Lucida Console", Font.BOLD, 30));
 		//Choix de la combinaison
-		jlCombi = new JLabel("Choisissez votre code à " + nbreChiffre + " chiffres :");
-		jfCombi = new JTextField();
-		jfCombi.setPreferredSize(new Dimension(210, 40));
-		jfCombi.setFont(new Font("Lucida Console", Font.BOLD, 30));
-
-		JButton randomButton = new JButton("Aléatoire");
-		randomButton.addActionListener(new RandomListener());
-
 		JPanel panCombi = new JPanel();
 		panCombi.setBackground(Color.white);
 		panCombi.setPreferredSize(new Dimension(590, 80));
 		panCombi.setBorder(BorderFactory.createTitledBorder("Choix de la combinaison"));
-		panCombi.add(jlCombi);
-		panCombi.add(jfCombi);
-		panCombi.add(randomButton);
-
+		panCombi.add(jlSigne);
+		panCombi.add(jtSigne);
 		//-- Ajout de tout les composants au content
 		content = new JPanel();
 		content.setBackground(Color.white);
 		content.add(panCombi);
-
 		JPanel control = new JPanel();
 		JButton okBouton = new JButton("OK");
-
 		okBouton.addActionListener(new RunListener());
-
 		JButton cancelBouton = new JButton("Annuler");
-		cancelBouton.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent arg0) {
-				setVisible(false);
-			}      
-		});
-
+		cancelBouton.addActionListener(new ActionListener(){public void actionPerformed(ActionEvent arg0) {setVisible(false);}});
 		control.setBackground(Color.white);
 		control.add(okBouton);
 		control.add(cancelBouton);
-
 		this.getContentPane().add(content, BorderLayout.CENTER);
 		this.getContentPane().add(control, BorderLayout.SOUTH);
 	}
 
+	/**
+	 * 
+	 */
 	private void acurateData() {
-
 		isOkData = true;
-		String comb = jfCombi.getText();
-		
+		String comb = jtSigne.getText();
+
 		if (comb.length() != nbreChiffre) {
-			JOptionPane.showMessageDialog(null, "Erreur ! \n Veuillez entrer une combinaison à "+ nbreChiffre +".", "ERREUR", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Erreur ! \n Veuillez entrer une solution à "+ nbreChiffre +".", "ERREUR", JOptionPane.ERROR_MESSAGE);
 			isOkData = false;
-			jfCombi.setText("");
+			jtSigne.setText("");
 		}
-		else if (comb.matches("[0-9]*") == false) {
-			JOptionPane.showMessageDialog(null, "Erreur ! \n Veuillez n'entrer que des chiffres.", "ERREUR", JOptionPane.ERROR_MESSAGE);
+
+		else if (!Pattern.matches("^[+-=]{7}$", comb)) {
+			JOptionPane.showMessageDialog(null, "Erreur ! \n Veuillez n'entrer que les signes \"+\", \"-\" ou \"=\".", "ERREUR", JOptionPane.ERROR_MESSAGE);
 			isOkData = false;
-			jfCombi.setText("");
+			jtSigne.setText("");
 		}
 		else {
-			solution = comb;
+			System.out.println(comb);
 			logger.debug("la combinaison : "+combi);
 			isOkData = true;
 		}
 	}
-
 
 	class RunListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
@@ -136,41 +109,13 @@ public class PopUpCombi extends JDialog implements Observable {
 			//- ferme la fenetre lorsque les données sont bonnes
 			if (isOkData) {
 				setVisible(false);
-				partie.setSolution(solution);
 				updateObservateur();
-			}
-			logger.debug("cliqué sur ok ");
-		}
-
-	}
-
-	class RandomListener implements ActionListener {
-		public void actionPerformed(ActionEvent e) {
-			logger.info("cliqué sur random ");
-			jfCombi.setText(partie.random(nbreChiffre));
+				logger.debug("indice verifié et envoie au controller");
+			}	
 		}
 	}
-	
-	public String convertTabIntToString(int [] tab) {
-		String str= "";
-		for(int i = 0; i<tab.length; i++) {
-			str += Integer.toString(tab[i]);
-		}
-		return str;
-		
-	}
 
-	public void addObservateur(Observateur obs) {
-		listObservateur.add(obs);
-		this.updateObservateur();	
-	}
-
-	public void updateObservateur() {
-		for(Observateur obs : listObservateur)
-			obs.update(partie);
-	}
-
-	public void delObservateur() {
-		// TODO Auto-generated method stub	
-	}
+	public void addObservateur(Observateur obs) {}
+	public void updateObservateur() {}
+	public void delObservateur() {}
 }

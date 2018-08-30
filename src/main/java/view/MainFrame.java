@@ -7,11 +7,6 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.Properties;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -24,9 +19,14 @@ import javax.swing.KeyStroke;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import main.java.controller.Controller;
 import main.java.model.Configuration;
+import main.java.model.ModeDeJeu;
+import main.java.model.Model;
+import main.java.model.Partie;
 import main.java.observer.Observateur;
 import main.java.view.game.plusMoins.PanelPlusMoins;
+import main.java.view.game.plusMoins.PopUpCombi;
 
 
 
@@ -41,13 +41,18 @@ public class MainFrame extends JFrame implements Observateur {
 
 	//-- Les logs
 	private static final Logger logger = LogManager.getLogger();
-
 	//-- Les differents panels
-		private PanelAccueil accueil;
-		
+	private PanelAccueil accueil;
 	//-- La configuration
-		private Configuration config;
-	
+	private Configuration config;
+	//-- Le jeu
+	private Partie partie;
+	//-- Le Model
+	private Model model;
+	//-- Le controller
+	private Controller controller;
+	//-- Le Pop up pour choisir la combinaison 
+	private PopUpCombi popUpCombi;
 	//-- Les différents objets de notre IHM
 	private JMenuBar bar = new JMenuBar();
 	private JMenu fichier = new JMenu("Fichier");
@@ -84,9 +89,13 @@ public class MainFrame extends JFrame implements Observateur {
 		this.setTitle("Projet 3");
 		this.setSize(size);
 		config = new Configuration();
+		partie = new Partie();
+		model = new Model(config, partie, this);
+		controller = new Controller(config, partie, model);
 		initPanel();
 		initMenu();
 		logger.debug("Le contenu de la fenêtre a été initalisée");
+		logger.debug("configuration : "+ config.toString());
 	}
 
 	/**
@@ -94,9 +103,8 @@ public class MainFrame extends JFrame implements Observateur {
 	 */
 	public void initPanel() {
 		//-- Données
-
 		accueil = new PanelAccueil(size);
-		
+
 		contentPane = this.getContentPane();
 		contentPane.setBackground(Color.white);
 		contentPane.add(accueil, BorderLayout.CENTER);
@@ -120,31 +128,39 @@ public class MainFrame extends JFrame implements Observateur {
 		nouveauJeu.add(lePlusMoins);
 		lePlusMoinsChal.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
-				plusMoinsChal = new PanelPlusMoins(size, "chal", config);
+				partie.ordiPartie(config.getCombiPlusMoins());
+				logger.debug(partie.getSolution());
+				partie.setModeDeJeu(ModeDeJeu.PlusChal);
+				plusMoinsChal = new PanelPlusMoins(size, config, partie, controller);
 				contentPane.removeAll();
 				contentPane.add(plusMoinsChal, BorderLayout.CENTER);
 				contentPane.revalidate();
 			}});
 		lePlusMoins.add(lePlusMoinsChal);
-		
+
 		lePlusMoinsDef.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
-				plusMoinsDef = new PanelPlusMoins(size, "def", config);
+				partie.setModeDeJeu(ModeDeJeu.PlusDef);
+				popUpCombi = new PopUpCombi(null, "choix de la combinaison", true, config, partie, obs);
+				model.initOrdinateur();
+				plusMoinsDef = new PanelPlusMoins(size, config, partie, controller);
 				contentPane.removeAll();
 				contentPane.add(plusMoinsDef, BorderLayout.CENTER);
 				contentPane.revalidate();
 			}});
 		lePlusMoins.add(lePlusMoinsDef);
-		
+
 		lePlusMoinsDuel.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
-				plusMoinsDuel = new PanelPlusMoins(size, "duel", config);
+				partie.setModeDeJeu(ModeDeJeu.PlusDuel);
+				popUpCombi = new PopUpCombi(null, "choix de la combinaison", true, config, partie, obs);
+				plusMoinsDuel = new PanelPlusMoins(size, config, partie, controller);
 				contentPane.removeAll();
 				contentPane.add(plusMoinsDuel, BorderLayout.CENTER);
 				contentPane.revalidate();
 			}});
 		lePlusMoins.add(lePlusMoinsDuel);
-		
+
 		lePlusMoins.setMnemonic('p');
 
 		//-- Le mastermind
@@ -202,5 +218,47 @@ public class MainFrame extends JFrame implements Observateur {
 	public void update(Configuration config) {
 		this.config = config;
 		logger.debug("configuration : "+ config.toString());
+	}
+
+	public void update(Partie partie) {
+		//this.partie = partie;
+		//if(partie.isEnCours() == false) {
+		//contentPane.removeAll();
+		//contentPane.add(accueil, BorderLayout.CENTER);
+		//contentPane.repaint();
+		//}
+	}
+
+	/**
+	 * Vérification du choix de fin de partie si nouvelle partie ou menu principal
+	 */
+	public void update(String choixFinJeu) {
+		if 	(choixFinJeu == "nouvellePartie") {
+			System.out.println("nouvelle partie");
+
+			if (partie.getModeDeJeu().equals(ModeDeJeu.PlusChal)) {
+				lePlusMoinsChal.doClick();
+			}
+			else if (partie.getModeDeJeu().equals(ModeDeJeu.PlusDef)) {
+				lePlusMoinsDef.doClick();
+			}
+			else if (partie.getModeDeJeu().equals(ModeDeJeu.PlusDuel)) {
+				lePlusMoinsDuel.doClick();
+			}
+			else if (partie.getModeDeJeu().equals(ModeDeJeu.MastChal)) {
+				mastermindChal.doClick();
+			}
+			else if (partie.getModeDeJeu().equals(ModeDeJeu.MastDef)) {
+				mastermindDef.doClick();
+			}
+			else {
+				mastermindDuel.doClick();
+			}
+		}
+		else if (choixFinJeu == "menuPrincipal"){
+			contentPane.removeAll();
+			contentPane.add(accueil, BorderLayout.CENTER);
+			contentPane.repaint();
+		}
 	}
 }

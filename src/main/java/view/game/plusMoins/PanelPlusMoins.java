@@ -3,12 +3,14 @@ package main.java.view.game.plusMoins;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
+import main.java.controller.Controller;
 import main.java.model.Configuration;
+import main.java.model.ModeDeJeu;
+import main.java.model.Partie;
 import main.java.view.PanelModel;
-import test.ModelGamePanel;
 
 public class PanelPlusMoins extends PanelModel {
 	
@@ -16,17 +18,22 @@ public class PanelPlusMoins extends PanelModel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	//-- Les logs
+		private static final Logger logger = LogManager.getLogger();
+	
 	private ModelGamePanel gauche, droite;
-	private Dimension dim; 
-	private String mode; 
+	private Dimension dim;  
 	private Configuration config;
+	private Partie partie;
+	private Controller controller;
 
 	
-	public PanelPlusMoins(Dimension dim, String mode,Configuration config) {
+	public PanelPlusMoins(Dimension dim, Configuration config, Partie partie, Controller controller) {
 		super(dim);
 		this.dim = dim;
-		this.mode = mode;
 		this.config = config;
+		this.partie = partie;
+		this.controller = controller;
 		initPanel();
 		this.setVisible(true);
 	}
@@ -36,15 +43,15 @@ public class PanelPlusMoins extends PanelModel {
  */
 	protected void initPanel() {
 		this.setLayout(new BorderLayout());
-		if(mode == "chal") {
-			this.add(new ModelGamePanel("gauche", config,""), BorderLayout.WEST);
+		if(partie.getModeDeJeu() == ModeDeJeu.PlusChal) {
+			this.add(new ModelGamePanel("gauche", config, partie, "", controller), BorderLayout.WEST);
 		}
-		else if (mode == "def") {
-			this.add(new ModelGamePanel("droite",config,""), BorderLayout.EAST);
+		else if(partie.getModeDeJeu().equals(ModeDeJeu.PlusDef)) {
+			this.add(new ModelGamePanel("droite",config, partie, "", controller), BorderLayout.EAST);
 		}
-		else {
-			this.add(new ModelGamePanel("gauche", config,""), BorderLayout.WEST);
-			this.add(new ModelGamePanel("droite",config,""), BorderLayout.EAST);
+		else if(partie.getModeDeJeu() == ModeDeJeu.PlusDuel) {
+			this.add(new ModelGamePanel("gauche", config, partie, "", controller), BorderLayout.WEST);
+			this.add(new ModelGamePanel("droite",config, partie, "", controller), BorderLayout.EAST);
 		}
 	}
 }

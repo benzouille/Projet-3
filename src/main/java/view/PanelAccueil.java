@@ -3,6 +3,7 @@ package main.java.view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.ImageObserver;
@@ -10,6 +11,7 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -17,14 +19,11 @@ import javax.swing.JTextArea;
 
 public class PanelAccueil extends PanelModel {
 	
-	private JPanel gauche = new JPanel();
-	private JPanel droite = new JPanel();
+	private JPanel jpRegles = new JPanel();
+	private JPanel jpCommentaires = new JPanel();
 	
-	private JLabel titre;
-	private JTextArea texte;
-	//private ImageIcon img = new ImageIcon("resources/images/trump_accueil.jpg");
-	//private JLabel accueilImg = new JLabel(img);
-	private Dimension dim = new Dimension(1200, 800);
+	private JLabel jlTitre, jlComm;
+	private JTextArea jtTexte;
 
 	public PanelAccueil(Dimension dim) {
 		super (dim);
@@ -32,28 +31,41 @@ public class PanelAccueil extends PanelModel {
 	}
 
 	public void initPanel(){
-		titre = new JLabel("Bienvenue dans TrumpLand\n");
-		titre.setHorizontalAlignment(JLabel.CENTER);
-		titre.setFont(comics30);
+		jlTitre = new JLabel("PROJET 3");
+		jlTitre.setPreferredSize(new Dimension(800, 300));
+		jlTitre.setHorizontalAlignment(JLabel.CENTER);
+		jlTitre.setFont(new Font("Lucida Console", Font.BOLD, 50));
 
-		texte = new JTextArea(	"Dans ce merveilleux monde les hordes de méchants migrants tente de passer la frontière\n" +
-				"De plus le code de la grosse grosse bombe à été perdu\n" +
-				"Aide Trump à résoudre ses problèmes\n");
-		texte.setFont(arial);
-		texte.setEditable(false);
-		texte.setBackground(Color.white);
+		jtTexte = new JTextArea("Bienvenue dans la suite de jeu du plus-moins et du mastermind.\n" +
+				"\n" +
+				"\n" +
+				"\n" +
+				"Les règles sont les suivantes :\n" +
+				"\n" +
+				"\n" +
+				"En Mode Challenger : Vous devez trouver la combinaison secrète pour gagner.\n" +
+				"\n" +
+				"En Mode Défenseur : Vous devez créer une combinaison que l'ordinateur devra trouver.\n" +
+				"\n" +
+				"En Mode Duel : Vous devez trouver la combinaison secrète avant l'ordinateur pour gagner.\n" +
+				"\n" +
+				"\n");
+		jtTexte.setFont(new Font("Lucida Console", Font.BOLD, 25));
+		jtTexte.setEditable(false);
+		jtTexte.setBackground(Color.white);
 		
-		//accueilImg.setPreferredSize(dim);
+		jpRegles.setLayout(new BorderLayout());
+		jtTexte.setBorder(BorderFactory.createEmptyBorder(0, 20, 0, 10));
+		jpRegles.add(jtTexte, BorderLayout.CENTER);
 		
-		gauche.setLayout(new BorderLayout());
-		//gauche.add(titre, BorderLayout.NORTH);
-		gauche.add(texte, BorderLayout.CENTER);
-		
-		//droite.add(accueilImg, BorderLayout.SOUTH);
+		jlComm = new JLabel("Devenez le Kasparov du mastermind !");
+		jlComm.setFont(new Font("Lucida Console", Font.BOLD, 20));
+		jpCommentaires.setBackground(Color.white);
+		jpCommentaires.add(jlComm);
 		
 		this.setLayout(new BorderLayout());
-		this.add(titre, BorderLayout.NORTH);
-		this.add(gauche, BorderLayout.WEST);
-		this.add(droite, BorderLayout.EAST);
+		this.add(jlTitre, BorderLayout.NORTH);
+		this.add(jpRegles, BorderLayout.WEST);
+		this.add(jpCommentaires, BorderLayout.SOUTH);
 	}
 }
