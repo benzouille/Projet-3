@@ -83,6 +83,12 @@ public class Configuration {
 			logger.catching(e);
 		}
 	}
+	
+	public String toString() {
+		return "Configuration [tourPlusMoins=" + tourPlusMoins + ", tourMast=" + tourMast + ", combiPlusMoins="
+				+ combiPlusMoins + ", combiMast=" + combiMast + ", couleurMast=" + couleurMast + ", devMod=" + devMod
+				+ ", devModEnJeu=" + devModEnJeu + "]";
+	}
 
 	public int getTourPlusMoins() {return tourPlusMoins;}
 	public void setTourPlusMoins(int tourPlusMoins) {this.tourPlusMoins = tourPlusMoins;}
@@ -104,13 +110,6 @@ public class Configuration {
 
 	public boolean isDevModEnJeu() {return devModEnJeu;}
 	public void setDevModEnJeu(boolean devModEnJeu) {this.devModEnJeu = devModEnJeu;}
-
-	public String toString() {
-		return "Configuration [tourPlusMoins=" + tourPlusMoins + ", tourMast=" + tourMast + ", combiPlusMoins="
-				+ combiPlusMoins + ", combiMast=" + combiMast + ", couleurMast=" + couleurMast + ", devMod=" + devMod
-				+ ", devModEnJeu=" + devModEnJeu + "]";
-	}
-
 
 }
 

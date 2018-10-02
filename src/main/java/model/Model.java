@@ -2,8 +2,6 @@ package main.java.model;
 
 import java.util.ArrayList;
 
-import javax.swing.JOptionPane;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -36,7 +34,7 @@ public class Model implements Observable {
 	 */
 	public Model(Configuration config, Partie partie, Observateur obs) {
 		/*
-		 * TODO
+		 * TODO METTRE LES MEHODES DU MASTER ET DU JOUEUR DANS LES CLASSES RESPECTIVES
 		 * pour le mode duel instancier deux Model heritant de master et joueur
 		 * tableau de int pour la combinaison
 		 * 			si humain mettre le string dans le JFormattedTextField (le OkButton du ModelGamePanel ne fera que l'ajouter au tableau)
@@ -93,14 +91,12 @@ public class Model implements Observable {
 			}
 			this.partie.setProposition(proposition);
 		}
-		
 		intervaleMax = new float[config.getCombiPlusMoins()];
 		intervaleMin = new float[config.getCombiPlusMoins()];
 		for (int i = 0; i<config.getCombiPlusMoins(); i++) {
 			intervaleMax[i] =9.0f;
 			intervaleMin[i] =0.0f;
 		}
-		
 	}
 
 	/**
@@ -135,12 +131,10 @@ public class Model implements Observable {
 				//System.out.println(" nouvelle prop à l'enplacement "+i+" : "+nouvelleProp+" et interMax : "+intervaleMax[i]+". interMin : "+intervaleMin[i]);
 			}
 		}
-		//TODO à voir si mettre directement la nouvelleProp à la place de la prop dans l'objet partie
 		logger.debug(" nouvelle proposition et l'intervale Max et min", nouvelleProp, intervaleMax, intervaleMin);
 		this.partie.setProposition(nouvelleProp);
 		return nouvelleProp;
 	}
-
 
 	/**
 	 * Verifie si l'objet partie correspond aux conditions de victoire ou défaite
@@ -151,6 +145,7 @@ public class Model implements Observable {
 		int sol = Integer.parseInt(solution);
 		if (sol == prop) {
 			partie.setEnCours(false);
+			@SuppressWarnings("unused")
 			PopUpFinPartie pufp = new PopUpFinPartie(null, "Gagné", true, obs);
 		}
 		else {
@@ -158,12 +153,12 @@ public class Model implements Observable {
 			}
 			else {
 				partie.setEnCours(false);
+				@SuppressWarnings("unused")
 				PopUpFinPartie pufp = new PopUpFinPartie(null, "Perdu", true, obs);
 			}
 		}
 		return partie;
 	}
-
 
 	public void addObservateur(Observateur obs) {
 		listObservateur.add(obs);

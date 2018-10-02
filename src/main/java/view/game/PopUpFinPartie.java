@@ -46,20 +46,21 @@ public class PopUpFinPartie extends JDialog implements Observable{
 		menuPrinc.addActionListener(new MenuPrincipalListener());
 		quitter = new JButton("Quitter");
 		quitter.addActionListener(new QuitterListener());
-		
+
 		//-- Ajout de tout les composants au content
-				JPanel content = new JPanel();
-				content.setBackground(Color.white);
-				content.add(nouvJeu);
-				content.add(menuPrinc);
-				content.add(quitter);
-				this.getContentPane().add(content, BorderLayout.CENTER);
+		JPanel content = new JPanel();
+		content.setBackground(Color.white);
+		content.add(nouvJeu);
+		content.add(menuPrinc);
+		content.add(quitter);
+		this.getContentPane().add(content, BorderLayout.CENTER);
 	}
 
 	class RejouerListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			setVisible(false);
 			choixFinJeu = "nouvellePartie";
+			logger.trace("choix : rejouer");
 			updateObservateur();
 		}
 	}
@@ -68,12 +69,14 @@ public class PopUpFinPartie extends JDialog implements Observable{
 		public void actionPerformed(ActionEvent e) {
 			setVisible(false);
 			choixFinJeu = "menuPrincipal";
+			logger.trace("choix : menu principal");
 			updateObservateur();
 		}
 	}
 
 	class QuitterListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
+			logger.trace("choix : quitter");
 			System.exit(0);
 		}
 	}
@@ -94,7 +97,5 @@ public class PopUpFinPartie extends JDialog implements Observable{
 			obs.update(choixFinJeu);
 	}
 
-	public void delObservateur() {
-	}
-
+	public void delObservateur() {}
 }

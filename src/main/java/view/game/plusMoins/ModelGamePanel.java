@@ -29,8 +29,6 @@ import main.java.model.Partie;
 
 public class ModelGamePanel extends JPanel {
 
-	//TODO dans le constructeur ajouter un param mode de jeu
-
 	private static final long serialVersionUID = 1L;
 
 	//-- Les logs
@@ -45,11 +43,9 @@ public class ModelGamePanel extends JPanel {
 	private JButton buttOk;
 	private JFormattedTextField jfProp;
 	private JTextField jtIndice;
-	private Dimension size = new Dimension(800,1024);
-	private Dimension size_info = new Dimension(800, 200);
+	private Dimension size = new Dimension(800,1024), size_info = new Dimension(800, 200);
 	private int nbreChiffre, nbretour;
-	private String position, modJeu;
-	private boolean devMod;
+	private String position;
 	private boolean indiceIsOk;
 
 	public ModelGamePanel(String position, Configuration config,Partie partie, String modJeu, Controller controller) {
@@ -82,14 +78,13 @@ public class ModelGamePanel extends JPanel {
 		jlTour.setPreferredSize(new Dimension(386, 100));
 		jlTour.setHorizontalAlignment(JLabel.CENTER);
 
-		//TODO si panel de gauche avec le devMode desactivé mettre en invisible
 		jlSolution = new JLabel(partie.getSolution());
 		jlSolution.setFont(new Font("Lucida Console", Font.BOLD, 30));
 		jlSolution.setBorder(BorderFactory.createTitledBorder("La solution"));
 		jlSolution.setPreferredSize(new Dimension(386, 100));
 		jlSolution.setHorizontalAlignment(JLabel.CENTER);
 
-
+		//La solution : si le panel de gauche avec le devMode desactivé, mise en non visible.
 		if (position == "droite")
 			jlSolution.setVisible(true);
 		else if (position == "gauche" && config.isDevModEnJeu() == true)
@@ -124,7 +119,7 @@ public class ModelGamePanel extends JPanel {
 			b2.setLayout(new BoxLayout(b2, BoxLayout.LINE_AXIS));
 			b2.setBackground(Color.WHITE);
 			b2.setMinimumSize(new Dimension(790, 80));
-			
+
 			JLabel t1 = new JLabel();
 			t1.setPreferredSize(new Dimension(386, 40));
 			t1.setFont(new Font("Lucida Console", Font.BOLD, 30));        
@@ -133,11 +128,11 @@ public class ModelGamePanel extends JPanel {
 			t1.setHorizontalAlignment(JLabel.CENTER);    
 			t1.setBackground(Color.LIGHT_GRAY);
 			t1.setText(partie.getProposition());
-			
+
 			b2.add(t1);
 			jpGrid.add(b2);
 		}
-		
+
 
 		//-- Panel proposition/indices
 		jpProp = new JPanel();
@@ -181,10 +176,13 @@ public class ModelGamePanel extends JPanel {
 		this.add(jpProp, BorderLayout.SOUTH);
 	}
 
+	/**
+	 * Verifie l'integrité de l'indice avant l'envoi.
+	 * @param indice
+	 */
 	public void isOkIndice(String indice) {
-		//TODO faire la verification des indices donné par le joueur
 		indiceIsOk = true;
-		
+
 		if (indice.length() != nbreChiffre) {
 			JOptionPane.showMessageDialog(null, "Erreur ! \n Veuillez entrer une solution à "+ nbreChiffre +".", "ERREUR", JOptionPane.ERROR_MESSAGE);
 			indiceIsOk = false;
@@ -192,9 +190,9 @@ public class ModelGamePanel extends JPanel {
 		}
 		else if (Pattern.matches("^[+-=]{7}$", indice)){
 			JOptionPane.showMessageDialog(null, "Erreur ! \n Veuillez n'entrer que les signes \"+\", \"-\" ou \"=\".", "ERREUR", JOptionPane.ERROR_MESSAGE);
-			 indiceIsOk = false;
-			 jtIndice.setText("");
-		 }
+			indiceIsOk = false;
+			jtIndice.setText("");
+		}
 		else {
 			indiceIsOk = true;
 		}
@@ -207,12 +205,12 @@ public class ModelGamePanel extends JPanel {
 	 */
 	class OkListener implements ActionListener{
 		public void actionPerformed(ActionEvent x) {
-			
+
 			JPanel b2 = new JPanel();
 			b2.setLayout(new BoxLayout(b2, BoxLayout.LINE_AXIS));
 			b2.setBackground(Color.WHITE);
 			b2.setMinimumSize(new Dimension(790, 80));
-			
+
 			//proposition
 			JLabel t1 = new JLabel();
 			t1.setPreferredSize(new Dimension(386, 40));
@@ -221,7 +219,7 @@ public class ModelGamePanel extends JPanel {
 			t1.setSize(new Dimension(386, 100));                 
 			t1.setHorizontalAlignment(JLabel.CENTER);    
 			t1.setBackground(Color.LIGHT_GRAY);
-			
+
 			//indication
 			JLabel t2 = new JLabel();
 			t2.setPreferredSize(new Dimension(386, 40));
@@ -230,7 +228,7 @@ public class ModelGamePanel extends JPanel {
 			t2.setSize(new Dimension(386, 100));                 
 			t2.setHorizontalAlignment(JLabel.CENTER);    
 			t2.setBackground(Color.LIGHT_GRAY);
-			
+
 			if (position == "gauche") {
 				String proposition = jfProp.getText();
 				partie.setProposition(proposition);
@@ -251,7 +249,7 @@ public class ModelGamePanel extends JPanel {
 				//TODO pour le coté droit : modifier l'entrée avec indice et un JTextField qui sera remplit par le model et verifié par le controller
 				String indice = jtIndice.getText();
 				isOkIndice(indice);
-				
+
 				if (indiceIsOk) {
 					partie.setIndice(indice);
 					controller.sendIndice(partie);

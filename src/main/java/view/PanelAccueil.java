@@ -4,21 +4,18 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.image.ImageObserver;
-import java.io.File;
-import java.io.IOException;
 
-import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 public class PanelAccueil extends PanelModel {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 969983830550926835L;
 	private JPanel jpRegles = new JPanel();
 	private JPanel jpCommentaires = new JPanel();
 	

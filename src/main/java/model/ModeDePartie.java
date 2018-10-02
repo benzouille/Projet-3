@@ -1,12 +1,11 @@
 package main.java.model;
 
-public enum ModeDeJeu {
+public enum ModeDePartie {
 
 	PLUS_CHAL,
 	PLUS_DEF,
-	PLUS_DUEL,
 	
 	MAST_CHAL,
 	MAST_DEF,
-	MAST_DUEL;
+	
 }

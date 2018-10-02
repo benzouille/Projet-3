@@ -21,7 +21,7 @@ public class Dog2 implements ObservableDog, ObservateurDog {
 		nbreWaf = 0;
 	}
 
-	public void loop() {
+	public void boucle() {
 		nbreWaf ++;
 		try {
 			Thread.sleep(500);
@@ -29,18 +29,20 @@ public class Dog2 implements ObservableDog, ObservateurDog {
 			e.printStackTrace();
 		}
 		System.out.println("Wif Wif je suis le yorkshire, j'aboie "+nbreWaf+" fois !");
-		update(nbreWaf);
+		updateObservateur();
 	}
 
 	public void update(int nbreWaf) {
-			if (this.nbreWaf <= nbreWaf) {loop();}
-			System.out.println("update yorkshire. la variable"+this.nbreWaf+"le parametre"+nbreWaf);
+		if (this.nbreWaf < nbreWaf) {
+			//System.out.println("update yorkshire. la variable : "+this.nbreWaf+". le parametre : "+nbreWaf);
+			boucle();
+		}
 	}
 
 	public int getNbreWaf() {return nbreWaf;}
 	public void setNbreWaf(int nbreWaf) {this.nbreWaf = nbreWaf;}
-	
-	public void addObservateur(ObservateurDog obs) {listObservateur.add(obs); this.updateObservateur();}
+
+	public void addObservateur(ObservateurDog obs) {listObservateur.add(obs);}
 	public void updateObservateur() {for(ObservateurDog obs : listObservateur) {obs.update(nbreWaf);}}
 	public void delObservateur() {}
 }

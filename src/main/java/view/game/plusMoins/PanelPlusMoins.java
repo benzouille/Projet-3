@@ -9,6 +9,7 @@ import org.apache.logging.log4j.Logger;
 import main.java.controller.Controller;
 import main.java.model.Configuration;
 import main.java.model.ModeDeJeu;
+import main.java.model.ModeDePartie;
 import main.java.model.Partie;
 import main.java.view.PanelModel;
 
@@ -43,14 +44,10 @@ public class PanelPlusMoins extends PanelModel {
  */
 	protected void initPanel() {
 		this.setLayout(new BorderLayout());
-		if(partie.getModeDeJeu() == ModeDeJeu.PlusChal) {
+		if(partie.getModeDePartie() == ModeDePartie.PLUS_CHAL) {
 			this.add(new ModelGamePanel("gauche", config, partie, "", controller), BorderLayout.WEST);
 		}
-		else if(partie.getModeDeJeu().equals(ModeDeJeu.PlusDef)) {
-			this.add(new ModelGamePanel("droite",config, partie, "", controller), BorderLayout.EAST);
-		}
-		else if(partie.getModeDeJeu() == ModeDeJeu.PlusDuel) {
-			this.add(new ModelGamePanel("gauche", config, partie, "", controller), BorderLayout.WEST);
+		else if(partie.getModeDePartie().equals(ModeDePartie.PLUS_DEF)) {
 			this.add(new ModelGamePanel("droite",config, partie, "", controller), BorderLayout.EAST);
 		}
 	}

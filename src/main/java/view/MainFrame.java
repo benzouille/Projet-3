@@ -27,11 +27,12 @@ import main.java.model.Partie;
 import main.java.observer.Observateur;
 import main.java.view.game.plusMoins.PanelPlusMoins;
 import main.java.view.game.plusMoins.PopUpCombi;
-
+import test.avant_implementation.Jeu;
+import test.avant_implementation.PanelLink;
 
 
 /**
- * Application qui permet de gerer de jouer à deux jeux different
+ * Fenetre principale racine de la vue appelant le model, le controller et la vue.
  * @author Ben
  *
  */
@@ -49,26 +50,23 @@ public class MainFrame extends JFrame implements Observateur {
 	private Partie partie;
 	//-- Le Model
 	private Model model;
+	//-- Le Jeu
+	private Jeu jeu;
 	//-- Le controller
 	private Controller controller;
 	//-- Le Pop up pour choisir la combinaison 
+	@SuppressWarnings("unused")
 	private PopUpCombi popUpCombi;
 	//-- Les différents objets de notre IHM
 	private JMenuBar bar = new JMenuBar();
-	private JMenu fichier = new JMenu("Fichier");
-	private JMenu nouveauJeu = new JMenu("Nouveau");
+	private JMenu fichier = new JMenu("Fichier"), nouveauJeu = new JMenu("Nouveau");
+	private JMenuItem quitter = new JMenuItem("Quitter");
 
 	private JMenu lePlusMoins = new JMenu("Le + -");
-	private JMenuItem lePlusMoinsChal = new JMenuItem("Challenger");
-	private JMenuItem lePlusMoinsDef = new JMenuItem("Défenseur");
-	private JMenuItem lePlusMoinsDuel = new JMenuItem("Duel");
+	private JMenuItem lePlusMoinsChal = new JMenuItem("Challenger"), lePlusMoinsDef = new JMenuItem("Défenseur"), lePlusMoinsDuel = new JMenuItem("Duel");
 
 	private JMenu mastermind = new JMenu("Mastermind");
-	private JMenuItem mastermindChal = new JMenuItem("Challenger");
-	private JMenuItem mastermindDef = new JMenuItem("Défenseur");
-	private JMenuItem mastermindDuel = new JMenuItem("Duel");
-
-	private JMenuItem quitter = new JMenuItem("Quitter");
+	private JMenuItem mastermindChal = new JMenuItem("Challenger"), mastermindDef = new JMenuItem("Défenseur"), mastermindDuel = new JMenuItem("Duel");
 
 	private JMenu configuration = new JMenu("Configuration");
 	private JMenuItem configMenuI = new JMenuItem("configuration");
@@ -76,7 +74,7 @@ public class MainFrame extends JFrame implements Observateur {
 	private JMenu aProp = new JMenu("A Propos");
 	private JMenuItem aPropItem = new JMenuItem("A propos");
 
-	private Dimension size = new Dimension (1600, 1024);
+	private Dimension size = new Dimension (1600, 1040);
 	private Container contentPane;
 	private PanelPlusMoins plusMoinsDef, plusMoinsDuel, plusMoinsChal;
 
@@ -89,9 +87,8 @@ public class MainFrame extends JFrame implements Observateur {
 		this.setTitle("Projet 3");
 		this.setSize(size);
 		config = new Configuration();
-		partie = new Partie();
 		model = new Model(config, partie, this);
-		controller = new Controller(config, partie, model);
+		controller = new Controller(config, partie, model, jeu);
 		initPanel();
 		initMenu();
 		logger.debug("Le contenu de la fenêtre a été initalisée");
@@ -120,7 +117,6 @@ public class MainFrame extends JFrame implements Observateur {
 
 		@SuppressWarnings("unused")
 		Observateur obs = this;
-
 		fichier.add(nouveauJeu);
 		nouveauJeu.setMnemonic('n');
 
@@ -128,19 +124,21 @@ public class MainFrame extends JFrame implements Observateur {
 		nouveauJeu.add(lePlusMoins);
 		lePlusMoinsChal.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
-				partie.ordiPartie(config.getCombiPlusMoins());
-				logger.debug(partie.getSolution());
-				partie.setModeDeJeu(ModeDeJeu.PlusChal);
-				plusMoinsChal = new PanelPlusMoins(size, config, partie, controller);
+				//partie.ordiPartie(config.getCombiPlusMoins());
+				//logger.debug(partie.getSolution());
+				jeu = new Jeu(ModeDeJeu.PLUS_CHAL, config, obs);
+				//plusMoinsChal = new PanelPlusMoins(size, config, partie, controller);
+				PanelLink panelLink = new PanelLink(jeu, config, obs);
 				contentPane.removeAll();
-				contentPane.add(plusMoinsChal, BorderLayout.CENTER);
+				//contentPane.add(plusMoinsChal, BorderLayout.CENTER);
+				contentPane.add(panelLink, BorderLayout.CENTER);
 				contentPane.revalidate();
 			}});
 		lePlusMoins.add(lePlusMoinsChal);
 
 		lePlusMoinsDef.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
-				partie.setModeDeJeu(ModeDeJeu.PlusDef);
+				//partie.setModeDeJeu(ModeDeJeu.PLUS_DEF);
 				popUpCombi = new PopUpCombi(null, "choix de la combinaison", true, config, partie, obs);
 				model.initOrdinateur();
 				plusMoinsDef = new PanelPlusMoins(size, config, partie, controller);
@@ -152,7 +150,7 @@ public class MainFrame extends JFrame implements Observateur {
 
 		lePlusMoinsDuel.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
-				partie.setModeDeJeu(ModeDeJeu.PlusDuel);
+				//partie.setModeDeJeu(ModeDeJeu.PLUS_DUEL);
 				popUpCombi = new PopUpCombi(null, "choix de la combinaison", true, config, partie, obs);
 				plusMoinsDuel = new PanelPlusMoins(size, config, partie, controller);
 				contentPane.removeAll();
@@ -181,15 +179,14 @@ public class MainFrame extends JFrame implements Observateur {
 				System.exit(0);
 			}
 		});
-
 		fichier.setMnemonic('f');
 
 		configuration.add(configMenuI);
 		configuration.setMnemonic('c');
 		configMenuI.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				@SuppressWarnings("unused")
 				PopUpCfg ajout = new PopUpCfg(null, "Configuration", true, config , obs);
-
 			}
 		});
 
@@ -207,7 +204,6 @@ public class MainFrame extends JFrame implements Observateur {
 			}            
 		});
 
-
 		bar.add(fichier);
 		bar.add(configuration);
 		bar.add(aProp);
@@ -222,11 +218,6 @@ public class MainFrame extends JFrame implements Observateur {
 
 	public void update(Partie partie) {
 		//this.partie = partie;
-		//if(partie.isEnCours() == false) {
-		//contentPane.removeAll();
-		//contentPane.add(accueil, BorderLayout.CENTER);
-		//contentPane.repaint();
-		//}
 	}
 
 	/**
@@ -236,19 +227,19 @@ public class MainFrame extends JFrame implements Observateur {
 		if 	(choixFinJeu == "nouvellePartie") {
 			System.out.println("nouvelle partie");
 
-			if (partie.getModeDeJeu().equals(ModeDeJeu.PlusChal)) {
+			if (jeu.getModeDeJeu().equals(ModeDeJeu.PLUS_CHAL)) {
 				lePlusMoinsChal.doClick();
 			}
-			else if (partie.getModeDeJeu().equals(ModeDeJeu.PlusDef)) {
+			else if (jeu.getModeDeJeu().equals(ModeDeJeu.PLUS_DEF)) {
 				lePlusMoinsDef.doClick();
 			}
-			else if (partie.getModeDeJeu().equals(ModeDeJeu.PlusDuel)) {
+			else if (jeu.getModeDeJeu().equals(ModeDeJeu.PLUS_DUEL)) {
 				lePlusMoinsDuel.doClick();
 			}
-			else if (partie.getModeDeJeu().equals(ModeDeJeu.MastChal)) {
+			else if (jeu.getModeDeJeu().equals(ModeDeJeu.MAST_CHAL)) {
 				mastermindChal.doClick();
 			}
-			else if (partie.getModeDeJeu().equals(ModeDeJeu.MastDef)) {
+			else if (jeu.getModeDeJeu().equals(ModeDeJeu.MAST_DEF)) {
 				mastermindDef.doClick();
 			}
 			else {
@@ -260,5 +251,17 @@ public class MainFrame extends JFrame implements Observateur {
 			contentPane.add(accueil, BorderLayout.CENTER);
 			contentPane.repaint();
 		}
+	}
+
+	@Override
+	public void update(boolean test) {
+		// TODO a tester 
+		
+	}
+
+	@Override
+	public void update(Jeu jeu) {
+		// TODO Auto-generated method stub
+		
 	}
 }

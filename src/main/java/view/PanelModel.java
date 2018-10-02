@@ -9,6 +9,10 @@ import javax.swing.JPanel;
 public abstract class PanelModel extends JPanel {
 
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4494688574702011068L;
 	protected Font comics30 = new Font("Comics Sans MS", Font.BOLD, 30);
 	protected Font comics40 = new Font("Comics Sans MS", Font.BOLD, 40);
 	protected Font comics20 = new Font("Comics Sans MS", Font.BOLD, 20);
