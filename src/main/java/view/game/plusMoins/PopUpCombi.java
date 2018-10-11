@@ -165,8 +165,9 @@ public class PopUpCombi extends JDialog implements Observable {
 	}
 
 	public void updateObservateur() {
-		for(Observateur obs : listObservateur)
+		for(Observateur obs : listObservateur) {
 			obs.update(partie);
+		}
 	}
 
 	public void delObservateur() {}

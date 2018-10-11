@@ -43,16 +43,13 @@ public class MainFrame extends JFrame implements Observateur {
 	private PanelAccueil accueil;
 	//-- La configuration
 	private Configuration config;
-	//-- Le jeu
-	//private Partie partie;
-	//-- Le Model
-	//private Model model;
+	//-- L'observateur
+	private Observateur obs = this;
 	//-- Le Jeu
 	private Jeu jeu;
 	//-- La Vue
 	private PanelJeu panelLink;
-	//-- Le controller
-	//private Controller controller;
+
 	//-- Le Pop up pour choisir la combinaison 
 	@SuppressWarnings("unused")
 	private PopUpCombi popUpCombi;
@@ -111,9 +108,7 @@ public class MainFrame extends JFrame implements Observateur {
 	 * Méthode qui initialise la barre de menu et les differents boutons la composant ainsi que les actionlistener pour chaque JMenuItem
 	 */
 	private void initMenu() {
-
-		@SuppressWarnings("unused")
-		Observateur obs = this;
+		
 		fichier.add(nouveauJeu);
 		nouveauJeu.setMnemonic('n');
 

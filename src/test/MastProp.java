@@ -60,14 +60,17 @@ public class MastProp {
 		couleur.remove(typeCouleur.getCouleur(color));
 		poubelle.add(typeCouleur.getCouleur(color));
 	}
+	
 
 	public void proposition(Partie partie) {
 		for (int i = 0; i<configuration.getCombiMast(); i++) {
 			proposition.add(typeCouleur.getCouleur(Integer.valueOf(partie.getProposition().substring(i, i+1))));
 			indices.add(typeCouleur.getCouleur(Integer.valueOf(partie.getProposition().substring(i, i+1))));
-			if(indices.contains(typeCouleur.NOIR)) {
-
+		}
+			if(indices.isEmpty()) {
+				toTrashColor(0);
+				
 			}
 		}
 	}
-}
+

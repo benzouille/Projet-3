@@ -166,6 +166,7 @@ public class GamePanelPlusMoins extends JPanel {
 		jtfProposition.setPreferredSize(new Dimension(350, 70));
 		jtfProposition.setFont(font);
 		jtfProposition.addKeyListener(new EnterListener());
+		
 		jpCentreHaut.add(jtfProposition);
 
 		jpCentreBas = new JPanel();
@@ -222,17 +223,23 @@ public class GamePanelPlusMoins extends JPanel {
 		jpSouth.add(jpDroit, BorderLayout.EAST);
 
 	}
+	
+	public void devIndice() {
+		jtfProposition.setText(partie.getIndice());
+	}
 
 	public void newTurn() {
 		this.setBorder(BorderFactory.createLineBorder(Color.GREEN, 15, true));
 		jtfProposition.setEditable(true);
 		okButton.setEnabled(true);
+		this.revalidate();
 	}
 
 	public void stopTurn() {
 		this.setBorder(BorderFactory.createLineBorder(Color.RED, 15, true));
 		jtfProposition.setEditable(false);
 		okButton.setEnabled(false);
+		this.revalidate();
 	}
 
 	public void okPlusChal() {

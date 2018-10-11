@@ -26,7 +26,7 @@ public class MasterPlus implements ModelMaster, Observable {
 	private String solution, proposition, indices;
 
 	//TODO le master propose la solution et donne les indications pour la proposition
-	
+
 	public MasterPlus(Configuration config, Partie partie, Observateur obs) {
 		this.obs = obs;
 		this.config = config;
@@ -98,16 +98,17 @@ public class MasterPlus implements ModelMaster, Observable {
 		}
 		return partie;
 	}
-	
+
 	public void addObservateur(Observateur obs) {
 		listObservateur.add(obs);
 	}
 
 	public void updateObservateur() {
-		for(Observateur obs : listObservateur)
+		for(Observateur obs : listObservateur) {
 			System.out.println("updateObservateur() de Master");
-			obs.update(partie);
-		
+		System.out.println(partie.toString());
+		obs.update(partie);
+		}
 	}
 
 	public void delObservateur() {}
