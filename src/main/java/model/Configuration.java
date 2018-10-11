@@ -47,6 +47,7 @@ public class Configuration {
 
 			// recuperation des clés/values
 			devMod = Boolean.parseBoolean(prop.getProperty("devMode"));
+			devModEnJeu = Boolean.parseBoolean(prop.getProperty("devModeEnJeu"));
 			tourPlusMoins = Integer.valueOf(prop.getProperty("nbreTourPlusMoins"));
 			combiPlusMoins = Integer.valueOf(prop.getProperty("nbreCombiPlusMoins"));
 			tourMast = Integer.valueOf(prop.getProperty("nbreTourMast"));
@@ -69,6 +70,7 @@ public class Configuration {
 			output = new FileOutputStream(path);
 
 			prop.setProperty("devMode", String.valueOf(devMod));
+			prop.setProperty("devModeEnJeu", String.valueOf(devModEnJeu));
 			prop.setProperty("nbreTourPlusMoins", String.valueOf(tourPlusMoins));
 			prop.setProperty("nbreCombiPlusMoins", String.valueOf(combiPlusMoins));
 			prop.setProperty("nbreTourMast", String.valueOf(tourMast));

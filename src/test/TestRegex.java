@@ -6,7 +6,7 @@ public class TestRegex {
 	
 	public TestRegex() {
 		
-		System.out.println(signe());
+		System.out.println(chiffre());
 	}
 	
 	public boolean mail() {
@@ -17,8 +17,14 @@ public class TestRegex {
 	
 	public boolean signe() {
 		
-		boolean b = Pattern.matches("^[+-=]{7}$", "+-+-+++");
+		boolean b = Pattern.matches("^[+-=]{"+7+"}$", "+-+-+++");
 		return b;
+	}
+	
+	public boolean chiffre() {
+		boolean chiffre = Pattern.matches("^[0-9]{7}$", "2221333");
+		return chiffre;
+		
 	}
 	
 	public static void main(String[] args) {

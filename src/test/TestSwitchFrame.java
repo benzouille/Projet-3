@@ -9,20 +9,20 @@ import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import main.java.controller.Controller;
 import main.java.model.Configuration;
+import main.java.model.Jeu;
 import main.java.model.ModeDeJeu;
 import main.java.model.Partie;
 import main.java.observer.Observateur;
-import test.avant_implementation.ControllerV2;
-import test.avant_implementation.Jeu;
-import test.avant_implementation.PanelLink;
+import main.java.view.game.plusMoins.PanelJeu;
 
 public class TestSwitchFrame extends JFrame implements Observateur{
 
 	private static final long serialVersionUID = 1L;
 
 	private Configuration config;
-	private PanelLink panelLink;
+	private PanelJeu panelLink;
 	private Jeu jeu;
 	private Container container = this.getContentPane();
 	private Observateur obs;
@@ -44,7 +44,7 @@ public class TestSwitchFrame extends JFrame implements Observateur{
 			this.setSize(bigSize);
 		}
 		
-		panelLink = new PanelLink(jeu, config, obs);
+		panelLink = new PanelJeu(jeu, config, obs);
 		container.add(panelLink, BorderLayout.CENTER);
 	}
 
@@ -54,12 +54,16 @@ public class TestSwitchFrame extends JFrame implements Observateur{
 		if(partie.getNom() == jeu.getPartie1().getNom()) {
 			System.out.println("methode update partie1 de TestSwitchPanel");
 			jeu.setPartie1(partie);
+			if(jeu.getModeDeJeu() == ModeDeJeu.PLUS_DUEL) {
 			panelLink.defTurn();
+			}
 		}
 		else {
 			System.out.println("methode update partie2 de TestSwitchPanel");
 			jeu.setPartie2(partie);
+			if(jeu.getModeDeJeu() == ModeDeJeu.PLUS_DUEL) {
 			panelLink.chalTurn();
+			}
 		}
 	}
 	public void update(boolean test) {}

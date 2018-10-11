@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.BevelBorder;
 
-import test.avant_implementation.LigneTableau;
+import main.java.view.game.plusMoins.LigneTableau;
 
 public class FrameWithGridLayout extends JFrame {
 

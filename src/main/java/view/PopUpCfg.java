@@ -221,6 +221,7 @@ public class PopUpCfg extends JDialog implements Observable {
 		panDev.setBorder(BorderFactory.createTitledBorder("Mode developpeur"));
 		panDev.setPreferredSize(new Dimension(850, 60));
 		devMode = new JCheckBox("Mode Developpeur");
+		devMode.setSelected(!devModEnJeu);
 		panDev.add(devMode);
 
 		//-- Ajout de tout les composants au content
@@ -271,7 +272,7 @@ public class PopUpCfg extends JDialog implements Observable {
 			config.setCombiPlusMoins(combiPlusMoins);
 			config.setCombiMast(combiMast);
 			config.setCouleurMast(couleurMast);
-			//config.toString();
+			config.setCfg();
 			logger.debug("configuration : "+ config.toString());
 			updateObservateur();
 		}
