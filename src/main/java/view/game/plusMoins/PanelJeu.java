@@ -20,7 +20,9 @@ public class PanelJeu extends JPanel {
     private GamePanelPlusMoins jpChal, jpDef;
     private Configuration configuration;
     private Observateur obs;
-    private Dimension bigSize = new Dimension (1710, 1050), smallSize = new Dimension (845, 1040);
+    private Dimension bigSize        = new Dimension (1710, 1050),
+                      smallSize     = new Dimension (845, 1040),
+                      bourrageSize  = new Dimension(430, 1040);
 
     public PanelJeu(Jeu jeu, Configuration configuration, Observateur obs) {
         this.jeu = jeu;
@@ -34,8 +36,8 @@ public class PanelJeu extends JPanel {
             this.setPreferredSize(smallSize);
             controller = new Controller(configuration,jeu.getPartie1(), jeu);
             jpChal = new GamePanelPlusMoins(configuration, jeu.getModeDeJeu(), jeu.getPartie1(), controller);
-            jpChal.setPreferredSize(smallSize);
-            this.setLayout(new BorderLayout());
+
+            ajouterPanneauxDeBourrageDeChaqueCote();
             this.add(jpChal, BorderLayout.CENTER);
         }
         else if(jeu.getModeDeJeu().equals(ModeDeJeu.PLUS_DEF)) {
@@ -49,8 +51,9 @@ public class PanelJeu extends JPanel {
                 System.out.println("dans le if");
             }
             else {System.out.println("dans le else");}
-            jpDef.setPreferredSize(smallSize);
-            this.add(jpDef);
+
+            ajouterPanneauxDeBourrageDeChaqueCote();
+            this.add(jpDef, BorderLayout.CENTER );
         }
         else if(jeu.getModeDeJeu().equals(ModeDeJeu.PLUS_DUEL)) {
             this.setPreferredSize(bigSize);
@@ -70,6 +73,19 @@ public class PanelJeu extends JPanel {
             this.add(jpEspace, BorderLayout.CENTER);
             this.add(jpDef, BorderLayout.EAST);
         }
+    }
+
+    /**
+     *  Les panneaux de bourrage
+     */
+    private void ajouterPanneauxDeBourrageDeChaqueCote() {
+        this.setLayout(new BorderLayout());
+        JPanel jpLeft = new JPanel();
+        JPanel jpRight = new JPanel();
+        jpLeft.setPreferredSize(bourrageSize);
+        jpRight.setPreferredSize(bourrageSize);
+        this.add(jpLeft, BorderLayout.WEST);
+        this.add(jpRight, BorderLayout.EAST);
     }
 
     /**
