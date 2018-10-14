@@ -67,6 +67,10 @@ public class PanelJeu extends JPanel {
             jeu.getPartie2().setActif(false);
             jpDef = new GamePanelPlusMoins(configuration, jeu.getModeDeJeu(), jeu.getPartie2(), controller);
             jpDef.setPreferredSize(smallSize);
+            if(configuration.isDevModEnJeu() == true ) {
+                controller.sendProposition(jeu.getPartie2());
+                jpDef.devIndice();
+            }
 
             this.setLayout(new BorderLayout());
             this.add(jpChal, BorderLayout.WEST);
