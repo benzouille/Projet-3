@@ -1,28 +1,24 @@
 package test;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 
-import javax.swing.BorderFactory;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
-import main.java.controller.Controller;
 import main.java.model.Configuration;
 import main.java.model.Jeu;
 import main.java.model.ModeDeJeu;
 import main.java.model.Partie;
 import main.java.observer.Observateur;
-import main.java.view.game.plusMoins.PanelJeu;
+import main.java.view.game.PanelJeu;
 
 public class TestSwitchFrame extends JFrame implements Observateur{
 
 	private static final long serialVersionUID = 1L;
 
 	private Configuration config;
-	private PanelJeu panelLink;
+	private PanelJeu panelJeu;
 	private Jeu jeu;
 	private Container container = this.getContentPane();
 	private Observateur obs;
@@ -35,7 +31,7 @@ public class TestSwitchFrame extends JFrame implements Observateur{
 		obs = this;
 		config = new Configuration();
 		config.setDevModEnJeu(false);
-		jeu = new Jeu(ModeDeJeu.PLUS_DUEL, config, obs);
+		jeu = new Jeu(ModeDeJeu.MAST_CHAL, config, obs);
 		
 		if(jeu.getModeDeJeu().equals(ModeDeJeu.PLUS_CHAL) || jeu.getModeDeJeu().equals(ModeDeJeu.PLUS_DEF) || jeu.getModeDeJeu().equals(ModeDeJeu.MAST_CHAL) || jeu.getModeDeJeu().equals(ModeDeJeu.MAST_DEF)) {
 			this.setSize(smallSize);
@@ -44,8 +40,8 @@ public class TestSwitchFrame extends JFrame implements Observateur{
 			this.setSize(bigSize);
 		}
 		
-		panelLink = new PanelJeu(jeu, config, obs);
-		container.add(panelLink, BorderLayout.CENTER);
+		panelJeu = new PanelJeu(jeu, config, obs);
+		container.add(panelJeu, BorderLayout.CENTER);
 	}
 
 	public void update(Configuration config) {}
@@ -55,14 +51,14 @@ public class TestSwitchFrame extends JFrame implements Observateur{
 			System.out.println("methode update partie1 de TestSwitchPanel");
 			jeu.setPartie1(partie);
 			if(jeu.getModeDeJeu() == ModeDeJeu.PLUS_DUEL) {
-			panelLink.defTurn();
+				panelJeu.defTurn();
 			}
 		}
 		else {
 			System.out.println("methode update partie2 de TestSwitchPanel");
 			jeu.setPartie2(partie);
 			if(jeu.getModeDeJeu() == ModeDeJeu.PLUS_DUEL) {
-			panelLink.chalTurn();
+				panelJeu.chalTurn();
 			}
 		}
 	}

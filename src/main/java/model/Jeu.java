@@ -32,7 +32,7 @@ public class Jeu {
 		}
 		else if(modeDeJeu.equals(ModeDeJeu.MAST_CHAL)) {
 			partie1 = new Partie("partie1", ModeDePartie.MAST_CHAL);
-			master = new MasterPlus(config, partie1, obs);
+			//master = new MasterPlus(config, partie1, obs);
 		}
 		else if(modeDeJeu.equals(ModeDeJeu.PLUS_DEF)) {
 			partie1 = new Partie("partie1", ModeDePartie.PLUS_DEF);
@@ -45,7 +45,7 @@ public class Jeu {
 		else if(modeDeJeu.equals(ModeDeJeu.MAST_DEF)) {
 			partie1 = new Partie("partie1", ModeDePartie.MAST_DEF);
 			joueur = new JoueurPlus(config, partie1, obs);
-			joueur.initOrdinateur(partie1);
+			//joueur.initOrdinateur(partie1);
 		}
 		else if(modeDeJeu.equals(ModeDeJeu.PLUS_DUEL)) {
 			partie1 = new Partie("partie1", ModeDePartie.PLUS_CHAL);
@@ -84,9 +84,6 @@ public class Jeu {
 	public void propOrdi(Partie partie) {
 		System.out.println("propOrdi() de Jeu");
 		joueur.propositionOrdinateur(partie);
-		//if(modeDeJeu == ModeDeJeu.PLUS_DUEL) {
-		//switchModeChal();
-		//}
 	}
 
 	/**
