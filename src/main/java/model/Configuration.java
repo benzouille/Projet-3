@@ -27,6 +27,7 @@ public class Configuration {
 		getCfg();
 
 	}
+
 	public Configuration(int tourPlusMoins, int tourMast, int combiPlusMoins, int combiMast, int couleurMast, boolean devMod, boolean devModEnJeu) {
 		this.tourPlusMoins = tourPlusMoins;
 		this.tourMast = tourMast;

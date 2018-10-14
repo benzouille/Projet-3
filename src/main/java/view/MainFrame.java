@@ -207,15 +207,15 @@ public class MainFrame extends JFrame implements Observateur {
 		if(partie.getNom() == jeu.getPartie1().getNom()) {
 			System.out.println("methode update partie1 de TestSwitchPanel");
 			jeu.setPartie1(partie);
-			if(jeu.getModeDeJeu() == ModeDeJeu.PLUS_DUEL) {
-			panelLink.defTurn();
+			if(jeu.getModeDeJeu() == ModeDeJeu.PLUS_DUEL && panelLink != null) {
+				panelLink.defTurn();
 			}
 		}
 		else {
 			System.out.println("methode update partie2 de TestSwitchPanel");
 			jeu.setPartie2(partie);
-			if(jeu.getModeDeJeu() == ModeDeJeu.PLUS_DUEL) {
-			panelLink.chalTurn();
+			if(jeu.getModeDeJeu() == ModeDeJeu.PLUS_DUEL && panelLink != null) {
+				panelLink.chalTurn();
 			}
 		}
 	}

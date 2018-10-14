@@ -50,13 +50,14 @@ public class PopUpCfg extends JDialog implements Observable {
 	 * @param parent
 	 * @param title
 	 * @param modal
-	 * @param dev
+	 * @param config
 	 * @param obs
 	 */
 	public PopUpCfg(JFrame parent, String title, boolean modal, Configuration config, Observateur obs) {
 		super(parent, title, modal);
 		
 		this.devMod = config.isDevMod();
+        this.devModEnJeu = config.isDevModEnJeu();
 		this.tourPlusMoins = config.getTourPlusMoins();
 		this.tourMast = config.getTourMast();
 		this.combiPlusMoins = config.getCombiPlusMoins();
@@ -221,7 +222,7 @@ public class PopUpCfg extends JDialog implements Observable {
 		panDev.setBorder(BorderFactory.createTitledBorder("Mode developpeur"));
 		panDev.setPreferredSize(new Dimension(850, 60));
 		devMode = new JCheckBox("Mode Developpeur");
-		devMode.setSelected(!devModEnJeu);
+		devMode.setSelected(devModEnJeu);
 		panDev.add(devMode);
 
 		//-- Ajout de tout les composants au content

@@ -245,7 +245,7 @@ public class GamePanelPlusMoins extends JPanel {
 	public void okPlusChal() {
 		System.out.println("okPlusChal() de GamePanelPlusMoins");
 		String proposition = jtfProposition.getText();
-		System.out.println("resultat de isOkProposition : "+ isOkProposition(proposition) + "longueur de la prop : "+proposition.length()+ "longueur de la config :"+config.getCombiPlusMoins());
+		//System.out.println("resultat de isOkProposition : "+ isOkProposition(proposition) + "longueur de la prop : "+proposition.length()+ "longueur de la config :"+config.getCombiPlusMoins());
 		if (isOkProposition(proposition)) {
 		partie.setProposition(proposition);
 		partie.setActif(false);
