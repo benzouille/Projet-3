@@ -1825,3 +1825,59 @@
 10:52:14.955 [Projet3 v0.1] INFO  main.java.view.game.plusMoins.PopUpCombi - cliqué sur random 
 10:52:27.661 [Projet3 v0.1] DEBUG main.java.view.game.plusMoins.PopUpCombi - la combinaison : 0
 10:54:19.925 [Projet3 v0.1] DEBUG main.java.model.Configuration - recuperation des clés/values dans config.properties : true 10 15 6 6 6
+17:42:39.711 [Projet3 v0.1] DEBUG main.java.model.Configuration - recuperation des clés/values dans config.properties : true 10 15 6 6 6
+17:42:39.803 [Projet3 v0.1] DEBUG main.java.view.MainFrame - Le contenu de la fenêtre a été initalisée
+17:42:39.803 [Projet3 v0.1] DEBUG main.java.view.MainFrame - configuration : Configuration [tourPlusMoins=10, tourMast=15, combiPlusMoins=6, combiMast=6, couleurMast=6, devMod=true, devModEnJeu=true]
+17:42:49.761 [Projet3 v0.1] INFO  main.java.view.game.plusMoins.PopUpCombi - cliqué sur random 
+17:42:51.171 [Projet3 v0.1] DEBUG main.java.view.game.plusMoins.PopUpCombi - la combinaison : 0
+17:42:58.177 [Projet3 v0.1] DEBUG main.java.model.plusMoins.MasterPlus - Partie : [Mode de Partie : PLUS_CHAL, solution : 922719, proposition : 555555, indice : +--+-+, tour : 1, enCours : true]
+18:51:56.352 [Projet3 v0.1] DEBUG main.java.model.Configuration - recuperation des clés/values dans config.properties : true 10 15 6 6 6
+18:51:56.503 [Projet3 v0.1] DEBUG main.java.view.MainFrame - Le contenu de la fenêtre a été initalisée
+18:51:56.503 [Projet3 v0.1] DEBUG main.java.view.MainFrame - configuration : Configuration [tourPlusMoins=10, tourMast=15, combiPlusMoins=6, combiMast=6, couleurMast=6, devMod=true, devModEnJeu=true]
+18:53:39.098 [Projet3 v0.1] DEBUG main.java.model.Configuration - recuperation des clés/values dans config.properties : true 10 15 6 6 6
+18:53:39.150 [Projet3 v0.1] DEBUG main.java.view.MainFrame - Le contenu de la fenêtre a été initalisée
+18:53:39.151 [Projet3 v0.1] DEBUG main.java.view.MainFrame - configuration : Configuration [tourPlusMoins=10, tourMast=15, combiPlusMoins=6, combiMast=6, couleurMast=6, devMod=true, devModEnJeu=true]
+18:53:57.702 [Projet3 v0.1] INFO  main.java.view.game.plusMoins.PopUpCombi - cliqué sur random 
+18:53:58.898 [Projet3 v0.1] DEBUG main.java.view.game.plusMoins.PopUpCombi - la combinaison : 0
+18:53:58.912 [Projet3 v0.1] DEBUG main.java.view.game.plusMoins.PopUpCombi - cliqué sur ok 
+18:54:05.460 [Projet3 v0.1] DEBUG main.java.model.plusMoins.MasterPlus - Partie : [Mode de Partie : PLUS_CHAL, solution : 305805, proposition : 555555, indice : --=+-=, tour : 1, enCours : true]
+21:23:09.498 [Projet3 v0.1] DEBUG main.java.model.Configuration - recuperation des clés/values dans config.properties : true 10 15 6 6 6
+21:23:09.541 [Projet3 v0.1] DEBUG main.java.view.MainFrame - Le contenu de la fenêtre a été initalisée
+21:23:09.541 [Projet3 v0.1] DEBUG main.java.view.MainFrame - configuration : Configuration [tourPlusMoins=10, tourMast=15, combiPlusMoins=6, combiMast=6, couleurMast=6, devMod=true, devModEnJeu=true]
+21:23:14.789 [Projet3 v0.1] INFO  main.java.view.game.plusMoins.PopUpCombi - cliqué sur random 
+21:23:15.492 [Projet3 v0.1] DEBUG main.java.view.game.plusMoins.PopUpCombi - la combinaison : 0
+21:23:15.499 [Projet3 v0.1] DEBUG main.java.view.game.plusMoins.PopUpCombi - cliqué sur ok 
+21:23:21.565 [Projet3 v0.1] DEBUG main.java.model.plusMoins.MasterPlus - Partie : [Mode de Partie : PLUS_CHAL, solution : 815703, proposition : 555555, indice : +-=+--, tour : 1, enCours : true]
+21:35:18.872 [Projet3 v0.1] DEBUG main.java.model.Configuration - recuperation des clés/values dans config.properties : true 10 15 6 6 6
+21:35:18.930 [Projet3 v0.1] DEBUG main.java.view.MainFrame - Le contenu de la fenêtre a été initalisée
+21:35:18.930 [Projet3 v0.1] DEBUG main.java.view.MainFrame - configuration : Configuration [tourPlusMoins=10, tourMast=15, combiPlusMoins=6, combiMast=6, couleurMast=6, devMod=true, devModEnJeu=true]
+21:35:22.364 [Projet3 v0.1] DEBUG main.java.view.MainFrame - 943637
+21:35:30.343 [Projet3 v0.1] INFO  main.java.view.game.plusMoins.PopUpCombi - cliqué sur random 
+21:35:31.096 [Projet3 v0.1] DEBUG main.java.view.game.plusMoins.PopUpCombi - la combinaison : 0
+21:35:31.105 [Projet3 v0.1] DEBUG main.java.view.game.plusMoins.PopUpCombi - cliqué sur ok 
+21:35:31.115 [Projet3 v0.1] DEBUG main.java.model.plusMoins.MasterPlus - Partie : [Mode de Partie : PLUS_DEF, solution : 917873, proposition : 555555, indice : +-+++-, tour : 0, enCours : true]
+21:35:35.802 [Projet3 v0.1] DEBUG main.java.model.plusMoins.JoueurPlus -  nouvelle proposition et l'intervale Max et min
+21:35:35.814 [Projet3 v0.1] DEBUG main.java.model.plusMoins.MasterPlus - Partie : [Mode de Partie : PLUS_DEF, solution : 917873, proposition : 727772, indice : +-=+=+, tour : 1, enCours : true]
+21:35:36.584 [Projet3 v0.1] DEBUG main.java.model.plusMoins.JoueurPlus -  nouvelle proposition et l'intervale Max et min
+21:35:36.586 [Projet3 v0.1] DEBUG main.java.model.plusMoins.MasterPlus - Partie : [Mode de Partie : PLUS_DEF, solution : 917873, proposition : 817874, indice : +====-, tour : 2, enCours : true]
+21:35:37.320 [Projet3 v0.1] DEBUG main.java.model.plusMoins.JoueurPlus -  nouvelle proposition et l'intervale Max et min
+21:35:37.322 [Projet3 v0.1] DEBUG main.java.model.plusMoins.MasterPlus - Partie : [Mode de Partie : PLUS_DEF, solution : 917873, proposition : 917873, indice : ======, tour : 3, enCours : true]
+21:35:37.915 [Projet3 v0.1] DEBUG main.java.model.plusMoins.MasterPlus - Partie : [Mode de Partie : PLUS_DEF, solution : 917873, proposition : 917873, indice : ======, tour : 3, enCours : false]
+21:35:38.221 [Projet3 v0.1] DEBUG main.java.model.plusMoins.MasterPlus - Partie : [Mode de Partie : PLUS_DEF, solution : 917873, proposition : 917873, indice : ======, tour : 3, enCours : false]
+21:36:28.364 [Projet3 v0.1] DEBUG main.java.model.Configuration - recuperation des clés/values dans config.properties : true 10 15 6 6 6
+21:36:28.425 [Projet3 v0.1] DEBUG main.java.view.MainFrame - Le contenu de la fenêtre a été initalisée
+21:36:28.426 [Projet3 v0.1] DEBUG main.java.view.MainFrame - configuration : Configuration [tourPlusMoins=10, tourMast=15, combiPlusMoins=6, combiMast=6, couleurMast=6, devMod=true, devModEnJeu=true]
+21:36:33.536 [Projet3 v0.1] INFO  main.java.view.game.plusMoins.PopUpCombi - cliqué sur random 
+21:36:34.240 [Projet3 v0.1] DEBUG main.java.view.game.plusMoins.PopUpCombi - la combinaison : 0
+21:36:34.249 [Projet3 v0.1] DEBUG main.java.view.game.plusMoins.PopUpCombi - cliqué sur ok 
+21:36:43.860 [Projet3 v0.1] DEBUG main.java.model.plusMoins.MasterPlus - Partie : [Mode de Partie : PLUS_CHAL, solution : 545315, proposition : 555555, indice : =-=--=, tour : 1, enCours : true]
+21:38:15.929 [Projet3 v0.1] DEBUG main.java.model.Configuration - recuperation des clés/values dans config.properties : true 10 15 6 6 6
+21:38:15.975 [Projet3 v0.1] DEBUG main.java.view.MainFrame - Le contenu de la fenêtre a été initalisée
+21:38:15.975 [Projet3 v0.1] DEBUG main.java.view.MainFrame - configuration : Configuration [tourPlusMoins=10, tourMast=15, combiPlusMoins=6, combiMast=6, couleurMast=6, devMod=true, devModEnJeu=true]
+21:38:20.734 [Projet3 v0.1] INFO  main.java.view.game.plusMoins.PopUpCombi - cliqué sur random 
+21:38:21.422 [Projet3 v0.1] DEBUG main.java.view.game.plusMoins.PopUpCombi - la combinaison : 0
+21:38:21.431 [Projet3 v0.1] DEBUG main.java.view.game.plusMoins.PopUpCombi - cliqué sur ok 
+21:38:21.441 [Projet3 v0.1] DEBUG main.java.model.plusMoins.MasterPlus - Partie : [Mode de Partie : PLUS_DEF, solution : 737994, proposition : 555555, indice : +-+++-, tour : 0, enCours : true]
+21:38:27.654 [Projet3 v0.1] DEBUG main.java.model.plusMoins.MasterPlus - Partie : [Mode de Partie : PLUS_CHAL, solution : 420970, proposition : 555555, indice : ---++-, tour : 1, enCours : true]
+21:38:35.837 [Projet3 v0.1] DEBUG main.java.model.plusMoins.JoueurPlus -  nouvelle proposition et l'intervale Max et min
+21:38:35.843 [Projet3 v0.1] DEBUG main.java.model.plusMoins.MasterPlus - Partie : [Mode de Partie : PLUS_DEF, solution : 737994, proposition : 727772, indice : =+=+++, tour : 1, enCours : true]

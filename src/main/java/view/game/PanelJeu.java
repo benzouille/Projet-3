@@ -3,7 +3,7 @@ package main.java.view.game;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 
-import javax.swing.JPanel;
+import javax.swing.*;
 
 import main.java.controller.Controller;
 import main.java.model.Configuration;
@@ -24,7 +24,9 @@ public class PanelJeu extends JPanel {
 	private GamePanelMastermind jpChalMast, jpDefMast;
 	private Configuration configuration;
 	private Observateur obs;
-	private Dimension bigSize = new Dimension (1710, 1050), smallSize = new Dimension (845, 1040);
+	private Dimension bigSize = new Dimension (1710, 1050), 
+			smallSize = new Dimension (845, 1040),
+			bourrageSize  = new Dimension(430, 1040);
 
 	public PanelJeu(Jeu jeu, Configuration configuration, Observateur obs) {
 		this.jeu = jeu;
@@ -38,9 +40,8 @@ public class PanelJeu extends JPanel {
 			this.setPreferredSize(smallSize);
 			controller = new Controller(configuration,jeu.getPartie1(), jeu);
 			jpChalPlus = new GamePanelPlusMoins(configuration, jeu.getModeDeJeu(), jeu.getPartie1(), controller);
-			jpChalPlus.setPreferredSize(smallSize);
-			this.setLayout(new BorderLayout());
-			this.add(jpChalPlus, BorderLayout.WEST);
+			ajouterPanneauxDeBourrageDeChaqueCote();
+			this.add(jpChalPlus, BorderLayout.CENTER);
 		}
 		else if(jeu.getModeDeJeu().equals(ModeDeJeu.PLUS_DEF)) {
 			this.setPreferredSize(smallSize);
@@ -53,8 +54,8 @@ public class PanelJeu extends JPanel {
 				System.out.println("dans le if");
 			}
 			else {System.out.println("dans le else");}
-			jpDefPlus.setPreferredSize(smallSize);
-			this.add(jpDefPlus);
+			ajouterPanneauxDeBourrageDeChaqueCote();
+			this.add(jpDefPlus, BorderLayout.CENTER);
 		}
 		else if(jeu.getModeDeJeu().equals(ModeDeJeu.PLUS_DUEL)) {
 			this.setPreferredSize(bigSize);
@@ -67,6 +68,12 @@ public class PanelJeu extends JPanel {
 			PopUpCombi popUpCombi = new PopUpCombi(null, "choix de la combinaison", true, configuration, jeu.getPartie2(), obs);
 			jeu.getPartie2().setActif(false);
 			jpDefPlus = new GamePanelPlusMoins(configuration, jeu.getModeDeJeu(), jeu.getPartie2(), controller);
+			if(configuration.isDevModEnJeu() == true && jeu.getPartie2().getModeDePartie() == ModeDePartie.PLUS_DEF) {
+				controller.sendProposition(jeu.getPartie2());
+				jpDefPlus.devIndice();
+				System.out.println("dans le if");
+			}
+			else {System.out.println("dans le else");}
 			jpDefPlus.setPreferredSize(smallSize);
 
 			this.setLayout(new BorderLayout());
@@ -78,8 +85,7 @@ public class PanelJeu extends JPanel {
 			this.setPreferredSize(smallSize);
 			controller = new Controller(configuration,jeu.getPartie1(), jeu);
 			jpChalMast = new GamePanelMastermind(configuration, jeu.getModeDeJeu(), jeu.getPartie1(), controller);
-			jpChalMast.setPreferredSize(smallSize);
-			this.setLayout(new BorderLayout());
+			ajouterPanneauxDeBourrageDeChaqueCote();
 			this.add(jpChalMast, BorderLayout.WEST);
 		}
 		else if(jeu.getModeDeJeu().equals(ModeDeJeu.MAST_DEF)) {
@@ -93,7 +99,7 @@ public class PanelJeu extends JPanel {
 				System.out.println("dans le if");
 			}
 			else {System.out.println("dans le else");}
-			jpDefMast.setPreferredSize(smallSize);
+			ajouterPanneauxDeBourrageDeChaqueCote();
 			this.add(jpDefMast);
 		}
 		else if(jeu.getModeDeJeu().equals(ModeDeJeu.MAST_DUEL)) {
@@ -115,31 +121,65 @@ public class PanelJeu extends JPanel {
 			this.add(jpDefMast, BorderLayout.EAST);
 		}
 	}
+	
+	/**
+     *  Les panneaux de bourrage
+     */
+    private void ajouterPanneauxDeBourrageDeChaqueCote() {
+        this.setLayout(new BorderLayout());
+        JPanel jpLeft = new JPanel();
+        JPanel jpRight = new JPanel();
+        jpLeft.setPreferredSize(bourrageSize);
+        jpRight.setPreferredSize(bourrageSize);
+        this.add(jpLeft, BorderLayout.WEST);
+        this.add(jpRight, BorderLayout.EAST);
+    }
+
+	/**
+	 * Le focus du challenger passe en rouge (tout est en rouge) et une seconde plus tard, le focus de la partie Défenseur passe en vert.
+	 */
 
 	public void defTurn() {
-		System.out.println("defTurn() de PanelLink");
-		jpDefPlus.newTurn();
-		try {
-			Thread.sleep(1000);
-			System.out.println("sleep defTurn");
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		jpChalPlus.stopTurn();
+		updateFocus(jpDefPlus, 2);
 	}
+
 	public void chalTurn() {
-		System.out.println("chalTurn() de PanelLink");
-		jpChalPlus.newTurn();
+		jpDefPlus.stopTurn();
+		updateFocus(jpChalPlus, 2);
+	}
+
+	/**
+	 * Mettre à jour le focus du second panneau de jeu via un Thread Indépendant.
+	 * @param jpTarget
+	 */
+	public static void updateFocus(GamePanelPlusMoins jpTarget, Integer secondes) {
+		new Thread(new Runnable() {
+			public void run() {
+				sleep(secondes);
+				//-- Modification de notre composant dans l'EDT
+				Thread t = new Thread(new Runnable() {
+					public void run() {
+						jpTarget.newTurn();
+					}
+				});
+				//-- Si l'EDT est actif, le Thread est lancée sinon il le sera par l'EDT plus tard
+				if (SwingUtilities.isEventDispatchThread())
+					t.start();
+				else {
+					SwingUtilities.invokeLater(t);
+				}
+			}
+		}).start();
+	}
+	/**
+	 * Lance une temporisation de x secondes.
+	 */
+	private static void sleep(Integer secondes) {
 		try {
-			Thread.sleep(1000);
-			System.out.println("sleep chalTurn");
+			Thread.sleep(secondes * 1000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		jpDefPlus.stopTurn();
 	}
 }
-
-

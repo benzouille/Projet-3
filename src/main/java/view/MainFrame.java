@@ -24,7 +24,7 @@ import main.java.model.Jeu;
 import main.java.model.ModeDeJeu;
 import main.java.model.Partie;
 import main.java.observer.Observateur;
-import main.java.view.game.plusMoins.PanelJeu;
+import main.java.view.game.PanelJeu;
 import main.java.view.game.plusMoins.PopUpCombi;
 
 
