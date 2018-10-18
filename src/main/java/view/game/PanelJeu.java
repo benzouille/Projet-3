@@ -5,6 +5,7 @@ import java.awt.Dimension;
 
 import javax.swing.*;
 
+import avant_implementation.GamePanelMastermind;
 import main.java.controller.Controller;
 import main.java.model.Configuration;
 import main.java.model.Jeu;
@@ -13,7 +14,6 @@ import main.java.model.ModeDePartie;
 import main.java.observer.Observateur;
 import main.java.view.game.plusMoins.GamePanelPlusMoins;
 import main.java.view.game.plusMoins.PopUpCombi;
-import test.avant_implementation.GamePanelMastermind;
 
 public class PanelJeu extends JPanel {
 

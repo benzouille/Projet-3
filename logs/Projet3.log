@@ -1881,3 +1881,20 @@
 21:38:27.654 [Projet3 v0.1] DEBUG main.java.model.plusMoins.MasterPlus - Partie : [Mode de Partie : PLUS_CHAL, solution : 420970, proposition : 555555, indice : ---++-, tour : 1, enCours : true]
 21:38:35.837 [Projet3 v0.1] DEBUG main.java.model.plusMoins.JoueurPlus -  nouvelle proposition et l'intervale Max et min
 21:38:35.843 [Projet3 v0.1] DEBUG main.java.model.plusMoins.MasterPlus - Partie : [Mode de Partie : PLUS_DEF, solution : 737994, proposition : 727772, indice : =+=+++, tour : 1, enCours : true]
+22:00:19.234 [Projet3 v0.1] DEBUG main.java.model.Configuration - recuperation des clés/values dans config.properties : true 10 15 6 6 6
+22:00:19.433 [Projet3 v0.1] DEBUG main.java.view.MainFrame - Le contenu de la fenêtre a été initalisée
+22:00:19.433 [Projet3 v0.1] DEBUG main.java.view.MainFrame - configuration : Configuration [tourPlusMoins=10, tourMast=15, combiPlusMoins=6, combiMast=6, couleurMast=6, devMod=true, devModEnJeu=true]
+19:27:08.207 [Projet3 v0.1] DEBUG main.java.model.Configuration - recuperation des clés/values dans config.properties : true 10 15 6 6 6
+19:27:08.280 [Projet3 v0.1] DEBUG main.java.view.MainFrame - Le contenu de la fenêtre a été initalisée
+19:27:08.280 [Projet3 v0.1] DEBUG main.java.view.MainFrame - configuration : Configuration [tourPlusMoins=10, tourMast=15, combiPlusMoins=6, combiMast=6, couleurMast=6, devMod=true, devModEnJeu=true]
+19:27:17.576 [Projet3 v0.1] INFO  main.java.view.game.plusMoins.PopUpCombi - cliqué sur random 
+19:27:18.111 [Projet3 v0.1] DEBUG main.java.view.game.plusMoins.PopUpCombi - la combinaison : 0
+19:27:18.128 [Projet3 v0.1] DEBUG main.java.view.game.plusMoins.PopUpCombi - cliqué sur ok 
+19:27:18.138 [Projet3 v0.1] DEBUG main.java.model.plusMoins.MasterPlus - Partie : [Mode de Partie : PLUS_DEF, solution : 941863, proposition : 555555, indice : +--++-, tour : 0, enCours : true]
+19:27:21.825 [Projet3 v0.1] DEBUG main.java.model.plusMoins.MasterPlus - Partie : [Mode de Partie : PLUS_CHAL, solution : 861648, proposition : 555555, indice : ++-+-+, tour : 1, enCours : true]
+19:27:25.061 [Projet3 v0.1] DEBUG main.java.model.plusMoins.JoueurPlus -  nouvelle proposition et l'intervale Max et min
+19:27:25.077 [Projet3 v0.1] DEBUG main.java.model.plusMoins.MasterPlus - Partie : [Mode de Partie : PLUS_DEF, solution : 941863, proposition : 722772, indice : ++-+-+, tour : 1, enCours : true]
+19:27:34.670 [Projet3 v0.1] DEBUG main.java.model.plusMoins.MasterPlus - Partie : [Mode de Partie : PLUS_CHAL, solution : 861648, proposition : 773737, indice : +---++, tour : 2, enCours : true]
+19:27:38.312 [Projet3 v0.1] DEBUG main.java.model.plusMoins.JoueurPlus -  nouvelle proposition et l'intervale Max et min
+19:27:38.315 [Projet3 v0.1] DEBUG main.java.model.plusMoins.MasterPlus - Partie : [Mode de Partie : PLUS_DEF, solution : 941863, proposition : 841864, indice : +====-, tour : 2, enCours : true]
+19:28:06.270 [Projet3 v0.1] DEBUG main.java.model.plusMoins.MasterPlus - Partie : [Mode de Partie : PLUS_CHAL, solution : 861648, proposition : 861648, indice : ======, tour : 3, enCours : false]

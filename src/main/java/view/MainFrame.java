@@ -185,7 +185,7 @@ public class MainFrame extends JFrame implements Observateur {
 				JOptionPane jop = new JOptionPane();
 				ImageIcon img = new ImageIcon("resources/images/banane.gif");        
 				String mess = "Crée par la Banane \n Amusez vous bien !\n";
-				mess += "Pour toute remaque ou suggestion concerant le jeu, contatez moi à :\n";
+				mess += "Pour toutes remarques ou suggestions concernant le jeu, contactez moi à :\n";
 				mess += "\n benjamin@fa-tech.net";        
 				jop.showMessageDialog(null, mess, "À propos", JOptionPane.INFORMATION_MESSAGE, img);        
 			}            
