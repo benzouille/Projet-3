@@ -198,11 +198,18 @@ public class MainFrame extends JFrame implements Observateur {
 		this.setJMenuBar(bar);
 	}
 
+	/**
+	 * Methode de mise à jour de la configuration par popUpCfg
+	 */
 	public void update(Configuration config) {
 		this.config = config;
 		logger.debug("configuration : "+ config.toString());
 	}
 
+	 /**
+	 * Methode de mise à jour de la partie par le model
+	 */
+	 
 	public void update(Partie partie) {
 		if(partie.getNom() == jeu.getPartie1().getNom()) {
 			System.out.println("methode update partie1 de TestSwitchPanel");
@@ -251,16 +258,5 @@ public class MainFrame extends JFrame implements Observateur {
 			contentPane.add(accueil, BorderLayout.CENTER);
 			contentPane.repaint();
 		}
-	}
-
-	public void update(boolean test) {
-		// TODO a tester 
-		
-	}
-
-
-	public void update(Jeu jeu) {
-		// TODO Auto-generated method stub
-		
 	}
 }

@@ -10,7 +10,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-public class PanelAccueil extends PanelModel {
+/**
+ * Panel D'accueil au lancement du jeu
+ * @author Ben
+ *
+ */
+public class PanelAccueil extends JPanel {
 	
 	/**
 	 * 
@@ -23,10 +28,14 @@ public class PanelAccueil extends PanelModel {
 	private JTextArea jtTexte;
 
 	public PanelAccueil(Dimension dim) {
-		super (dim);
+		this.setPreferredSize(dim);
+		this.setBackground(Color.white);
 		initPanel();
 	}
 
+	/**
+	 * Methode d'initialisation du panel
+	 */
 	public void initPanel(){
 		jlTitre = new JLabel("PROJET 3");
 		jlTitre.setPreferredSize(new Dimension(800, 300));
