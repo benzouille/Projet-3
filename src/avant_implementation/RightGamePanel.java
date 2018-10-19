@@ -7,8 +7,8 @@ import java.awt.Dimension;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import main.java.model.mastermind.Balle;
-import main.java.model.mastermind.TypeCouleur;
+import fr.lazarus.model.mastermind.Balle;
+import fr.lazarus.model.mastermind.TypeCouleur;
 
 
 public class RightGamePanel extends JPanel {

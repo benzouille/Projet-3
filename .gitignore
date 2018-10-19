@@ -2,6 +2,7 @@
 /bin
 .classpath
 .project
+*.log
 
 #-- For IntelliJ project
 .idea/

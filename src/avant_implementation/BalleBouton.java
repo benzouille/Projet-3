@@ -5,7 +5,9 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JLabel;
 
-import main.java.model.mastermind.Balle;
+import fr.lazarus.model.mastermind.Balle;
+
+
 
 public class BalleBouton implements MouseListener {
 

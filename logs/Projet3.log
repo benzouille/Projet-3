@@ -1898,3 +1898,30 @@
 19:27:38.312 [Projet3 v0.1] DEBUG main.java.model.plusMoins.JoueurPlus -  nouvelle proposition et l'intervale Max et min
 19:27:38.315 [Projet3 v0.1] DEBUG main.java.model.plusMoins.MasterPlus - Partie : [Mode de Partie : PLUS_DEF, solution : 941863, proposition : 841864, indice : +====-, tour : 2, enCours : true]
 19:28:06.270 [Projet3 v0.1] DEBUG main.java.model.plusMoins.MasterPlus - Partie : [Mode de Partie : PLUS_CHAL, solution : 861648, proposition : 861648, indice : ======, tour : 3, enCours : false]
+22:12:23.921 [Projet3 v0.1] DEBUG fr.lazarus.model.Configuration - recuperation des clés/values dans config.properties : true 10 15 6 6 6
+22:12:24.000 [Projet3 v0.1] DEBUG fr.lazarus.view.MainFrame - Le contenu de la fenêtre a été initalisée
+22:12:24.000 [Projet3 v0.1] DEBUG fr.lazarus.view.MainFrame - configuration : Configuration [tourPlusMoins=10, tourMast=15, combiPlusMoins=6, combiMast=6, couleurMast=6, devMod=true, devModEnJeu=true]
+22:12:24.499 [Projet3 v0.1] DEBUG fr.lazarus.model.Configuration - recuperation des clés/values dans config.properties : true 10 15 6 6 6
+22:12:24.536 [Projet3 v0.1] DEBUG fr.lazarus.view.MainFrame - Le contenu de la fenêtre a été initalisée
+22:12:24.536 [Projet3 v0.1] DEBUG fr.lazarus.view.MainFrame - configuration : Configuration [tourPlusMoins=10, tourMast=15, combiPlusMoins=6, combiMast=6, couleurMast=6, devMod=true, devModEnJeu=true]
+22:12:24.600 [Projet3 v0.1] DEBUG fr.lazarus.model.Configuration - recuperation des clés/values dans config.properties : true 10 15 6 6 6
+22:12:24.670 [Projet3 v0.1] DEBUG fr.lazarus.view.MainFrame - Le contenu de la fenêtre a été initalisée
+22:12:24.670 [Projet3 v0.1] DEBUG fr.lazarus.view.MainFrame - configuration : Configuration [tourPlusMoins=10, tourMast=15, combiPlusMoins=6, combiMast=6, couleurMast=6, devMod=true, devModEnJeu=true]
+22:12:33.656 [Projet3 v0.1] INFO  fr.lazarus.view.game.plusMoins.PopUpCombi - cliqué sur random 
+22:12:34.352 [Projet3 v0.1] DEBUG fr.lazarus.view.game.plusMoins.PopUpCombi - la combinaison : 0
+22:12:34.366 [Projet3 v0.1] DEBUG fr.lazarus.view.game.plusMoins.PopUpCombi - cliqué sur ok 
+22:12:34.375 [Projet3 v0.1] DEBUG fr.lazarus.model.plusMoins.MasterPlus - Partie : [Mode de Partie : PLUS_DEF, solution : 021981, proposition : 555555, indice : ---++-, tour : 0, enCours : true]
+22:12:51.705 [Projet3 v0.1] INFO  fr.lazarus.view.game.plusMoins.PopUpCombi - cliqué sur random 
+22:12:52.402 [Projet3 v0.1] DEBUG fr.lazarus.view.game.plusMoins.PopUpCombi - la combinaison : 0
+22:12:52.408 [Projet3 v0.1] DEBUG fr.lazarus.view.game.plusMoins.PopUpCombi - cliqué sur ok 
+22:12:52.415 [Projet3 v0.1] DEBUG fr.lazarus.model.plusMoins.MasterPlus - Partie : [Mode de Partie : PLUS_DEF, solution : 637506, proposition : 555555, indice : +-+=-+, tour : 0, enCours : true]
+22:21:14.008 [Projet3 v0.1] DEBUG fr.lazarus.model.Configuration - recuperation des clés/values dans config.properties : true 10 15 6 6 6
+22:21:14.076 [Projet3 v0.1] DEBUG fr.lazarus.view.MainFrame - Le contenu de la fenêtre a été initalisée
+22:21:14.076 [Projet3 v0.1] DEBUG fr.lazarus.view.MainFrame - configuration : Configuration [tourPlusMoins=10, tourMast=15, combiPlusMoins=6, combiMast=6, couleurMast=6, devMod=true, devModEnJeu=true]
+22:21:19.650 [Projet3 v0.1] INFO  fr.lazarus.view.game.plusMoins.PopUpCombi - cliqué sur random 
+22:21:20.353 [Projet3 v0.1] DEBUG fr.lazarus.view.game.plusMoins.PopUpCombi - la combinaison : 0
+22:21:20.360 [Projet3 v0.1] DEBUG fr.lazarus.view.game.plusMoins.PopUpCombi - cliqué sur ok 
+22:21:20.369 [Projet3 v0.1] DEBUG fr.lazarus.model.plusMoins.MasterPlus - Partie : [Mode de Partie : PLUS_DEF, solution : 166802, proposition : 555555, indice : -+++--, tour : 0, enCours : true]
+22:21:24.739 [Projet3 v0.1] DEBUG fr.lazarus.model.plusMoins.MasterPlus - Partie : [Mode de Partie : PLUS_CHAL, solution : 533295, proposition : 555555, indice : =---+=, tour : 1, enCours : true]
+22:21:28.854 [Projet3 v0.1] DEBUG fr.lazarus.model.plusMoins.JoueurPlus -  nouvelle proposition et l'intervale Max et min
+22:21:28.857 [Projet3 v0.1] DEBUG fr.lazarus.model.plusMoins.MasterPlus - Partie : [Mode de Partie : PLUS_DEF, solution : 166802, proposition : 277722, indice : ---+-=, tour : 1, enCours : true]

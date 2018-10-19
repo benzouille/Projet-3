@@ -1,4 +1,4 @@
-package avant_implementation;
+package fr.lazarus.view.game.plusMoins;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -26,7 +26,7 @@ import fr.lazarus.model.ModeDePartie;
 import fr.lazarus.model.Partie;
 
 
-public class GamePanelMastermind  extends JPanel {
+public class GamePanelPlusMoins extends JPanel {
 
 	private Configuration config;
 	private ModeDeJeu modeDeJeu;
@@ -43,7 +43,7 @@ public class GamePanelMastermind  extends JPanel {
 	private JPanel jpTop = new JPanel(), jpRight = new JPanel();
 	private JLabel jlModeDeJeu = new JLabel();
 
-	private CenterGamePanelMastermind centerGamePanel;
+	private CenterGamePanel centerGamePanel;
 
 	private Font font = new Font("Sego UI",Font.PLAIN,24), fontTitre = new Font("Sego UI",Font.PLAIN,40);
 
@@ -53,7 +53,7 @@ public class GamePanelMastermind  extends JPanel {
 	/**
 	 * Constructeur
 	 */
-	public GamePanelMastermind(Configuration config, ModeDeJeu modeDeJeu, Partie partie, Controller controller) {
+	public GamePanelPlusMoins(Configuration config, ModeDeJeu modeDeJeu, Partie partie, Controller controller) {
 		this.partie = partie;
 		this.modeDeJeu = modeDeJeu;
 		this.config = config;
@@ -70,12 +70,12 @@ public class GamePanelMastermind  extends JPanel {
 		//jpRight.setBorder(BorderFactory.createLineBorder(Color.MAGENTA));
 		initPanelSouth();
 
-		if (partie.getModeDePartie() == ModeDePartie.MAST_CHAL) {
-			jlModeDeJeu.setText("Mode challenger Mastermind");
+		if (partie.getModeDePartie() == ModeDePartie.PLUS_CHAL) {
+			jlModeDeJeu.setText("Mode challenger");
 			jlModeDeJeu.setForeground(Color.RED);
 		}
-		else if (partie.getModeDePartie() == ModeDePartie.MAST_DEF) {
-			jlModeDeJeu.setText("Mode défenseur Mastermind");
+		else if (partie.getModeDePartie() == ModeDePartie.PLUS_DEF) {
+			jlModeDeJeu.setText("Mode défenseur");
 			jlModeDeJeu.setForeground(Color.BLUE);
 		}
 		jlModeDeJeu.setFont(fontTitre);
@@ -83,7 +83,7 @@ public class GamePanelMastermind  extends JPanel {
 
 		contentPane.add(jpTop, BorderLayout.NORTH);
 		
-		centerGamePanel = new CenterGamePanelMastermind(config, partie);
+		centerGamePanel = new CenterGamePanel(config, partie);
 		centerGamePanel.add(jpRight, BorderLayout.EAST);
 		contentPane.add(centerGamePanel, BorderLayout.CENTER);
 		
@@ -245,7 +245,7 @@ public class GamePanelMastermind  extends JPanel {
 	public void okPlusChal() {
 		System.out.println("okPlusChal() de GamePanelPlusMoins");
 		String proposition = jtfProposition.getText();
-		System.out.println("resultat de isOkProposition : "+ isOkProposition(proposition) + "longueur de la prop : "+proposition.length()+ "longueur de la config :"+config.getCombiPlusMoins());
+		//System.out.println("resultat de isOkProposition : "+ isOkProposition(proposition) + "longueur de la prop : "+proposition.length()+ "longueur de la config :"+config.getCombiPlusMoins());
 		if (isOkProposition(proposition)) {
 		partie.setProposition(proposition);
 		partie.setActif(false);
